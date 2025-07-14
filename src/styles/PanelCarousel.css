@@ -1,0 +1,101 @@
+/* Enhanced Panel Carousel Styles */
+
+/* Main carousel styling */
+.carousel-container {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.carousel {
+  border-radius: 1rem 1rem 0 0;
+  overflow: hidden;
+}
+
+.carousel-item {
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.carousel-item img {
+  border-radius: 0;
+  filter: brightness(0.9);
+  transition: all 0.3s ease;
+}
+
+.carousel-item:hover img {
+  filter: brightness(1);
+}
+
+/* Description below image styling */
+.carousel-description-below {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  color: #4B306A;
+  text-align: left;
+  border-top: 3px solid #916f41;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-description-below h3 {
+  color: #4B306A !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.carousel-description-below h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #4B306A, #916f41);
+  border-radius: 1px;
+}
+
+.carousel-description-below p {
+  color: #6c757d !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel-description-below {
+    padding: 1.5rem;
+  }
+  
+  .carousel-description-below h3 {
+    font-size: 1.3rem;
+  }
+  
+  .carousel-description-below p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-description-below {
+    padding: 1rem;
+  }
+  
+  .carousel-description-below h3 {
+    font-size: 1.1rem;
+  }
+  
+  .carousel-description-below p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Smooth transitions */
+.carousel-item {
+  transition: transform 0.6s ease-in-out;
+}

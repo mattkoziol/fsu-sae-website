@@ -1,0 +1,498 @@
+/* Global Styles */
+:root {
+  --primary-color: #1a237e;
+  --secondary-color: #0d47a1;
+  --accent-color: #2962ff;
+  --text-color: #333;
+  --light-bg: #f8f9fa;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Header Styles */
+.page-header {
+  background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.9)), url('/images/header-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 100px 0;
+  margin-bottom: 2rem;
+}
+
+/* Card Styles */
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+/* Section Styles */
+section {
+  padding: 4rem 0;
+}
+
+.bg-light {
+  background-color: var(--light-bg) !important;
+}
+
+/* Icon Styles */
+.fa-3x {
+  color: var(--primary-color);
+}
+
+/* List Styles */
+.list-unstyled li {
+  margin-bottom: 1rem;
+}
+
+/* Image Styles */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 60px 0;
+  }
+  
+  section {
+    padding: 2rem 0;
+  }
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    color: white;
+    padding: 80px 0;
+    background: url('../images/HOUSEPHOTO.jpg') center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #101F41;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    overflow: hidden;
+}
+
+/* Overlay */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(88, 44, 131, 0.4), rgba(16, 31, 65, 0.5));
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+/* Content Container */
+.hero > .container {
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+/* Hover Effect */
+.hero:hover::before,
+.hero:hover > .container {
+    opacity: 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 991.98px) {
+    .hero {
+        padding: 30px 0;
+        background-size: cover;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .hero {
+        min-height: 500px;
+        max-height: 800px;
+        background-size: cover;
+        background-position: center 30%;
+    }
+}
+
+/* For extra large screens */
+@media screen and (min-width: 1440px) {
+    .hero {
+        background-position: center 40%;
+        background-size: 100% auto;
+    }
+}
+
+/* Disable hover effect on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .hero:hover::before,
+    .hero:hover > .container {
+        opacity: 1;
+    }
+}
+
+/* Navigation */
+.navbar, 
+nav.navbar,
+.navbar.navbar-expand-lg,
+.navbar.bg-body-tertiary {
+    background-color: white !important;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #916f41 !important; /* Old Gold */
+}
+
+.navbar-nav .nav-link {
+    color: #916f41 !important; /* Old Gold */
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #582C83 !important; /* Royal Purple on hover */
+}
+
+/* For mobile hamburger menu */
+.navbar-toggler {
+    border-color: #916f41 !important; /* Old Gold color */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(145, 111, 65, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Active nav item */
+.navbar-nav .nav-item.active .nav-link {
+    color: #582C83 !important; /* Royal Purple for active page */
+    font-weight: bold;
+}
+
+/* Dropdown menus if you have any */
+.dropdown-menu {
+    background-color: white;
+    border: 1px solid rgba(145, 111, 65, 0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dropdown-item {
+    color: #916f41;
+}
+
+.dropdown-item:hover {
+    background-color: #916f41;
+    color: white;
+}
+
+/* Section Styling */
+section {
+    padding: 60px 0;
+}
+
+section h2 {
+    margin-bottom: 30px;
+    color: #582C83; /* Royal Purple for section headings */
+    border-bottom: 3px solid #916f41; /* Old Gold underline */
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Feature Cards or Content Boxes */
+.feature-card {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-left: 4px solid #582C83; /* Royal Purple accent */
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #582C83; /* Royal Purple */
+    border-color: #582C83;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #101F41; /* SAE Blue on hover */
+    border-color: #101F41;
+}
+
+.btn-secondary {
+    background-color: #916f41; /* Old Gold */
+    border-color: #916f41;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #8C2131; /* SAE Crimson on hover */
+    border-color: #8C2131;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background-color: white;
+    color: #101F41;
+    padding: 80px 0;
+    position: relative;
+    border-top: 4px solid #582C83;
+    border-bottom: 4px solid #582C83;
+}
+
+.newsletter-content {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.newsletter-content h2 {
+    color: #582C83;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.newsletter-content p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.newsletter-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 12px;
+    border: 2px solid #582C83;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.newsletter-form input[type="email"]:focus {
+    outline: none;
+    border-color: #916f41;
+}
+
+.newsletter-form button {
+    background-color: #582C83;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.newsletter-form button:hover {
+    background-color: #916f41;
+    transform: translateY(-2px);
+}
+
+/* Accent Elements */
+.accent-border {
+    border-top: 3px solid #916f41;
+    padding-top: 20px;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, #101F41, #582C83);
+    color: white;
+    padding: 40px 0;
+}
+
+footer a {
+    color: #916f41;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #8C2131;
+}
+
+/* Social Icons with New Colors */
+.social-icons a {
+    color: #582C83;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #916f41;
+    transform: translateY(-3px);
+}
+
+/* Section Alternating Backgrounds */
+.section-alternate {
+    background-color: rgba(88, 44, 131, 0.05);
+}
+
+/* Highlight Boxes */
+.highlight-box {
+    background: linear-gradient(45deg, rgba(88, 44, 131, 0.1), rgba(145, 111, 65, 0.1));
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+}
+
+/* Call to Action Sections */
+.cta-section {
+    background: linear-gradient(rgba(88, 44, 131, 0.9), rgba(16, 31, 65, 0.9)), url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+/* Timeline or Process Steps */
+.timeline-item {
+    border-left: 3px solid #916f41;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #582C83;
+    border-radius: 50%;
+}
+
+/* Placeholder for development */
+.img-placeholder {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #ccc;
+}
+.chapter-image{
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1)
+}
+
+/* Ensure mobile menu text color matches desktop */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding: 1rem 0;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0;
+        color: #916f41 !important;
+    }
+}
+
+/* Page Header Styles */
+.page-header {
+    background: linear-gradient(135deg, var(--royal-purple) 0%, var(--royal-purple-dark) 100%) !important;
+    color: var(--white);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(212, 175, 55, 0.1) 0%, rgba(120, 81, 169, 0.1) 100%);
+    z-index: 1;
+}
+
+.page-header .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-header h1 {
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-header .lead {
+    color: var(--old-gold);
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+/* Keep the main navigation bar styles */
+.navbar {
+    background-color: var(--royal-purple) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    color: var(--old-gold) !important;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: var(--white) !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--old-gold) !important;
+}
+
+.nav-link.active {
+    color: var(--old-gold) !important;
+    font-weight: bold;
+}

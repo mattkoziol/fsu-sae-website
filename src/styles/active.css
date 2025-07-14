@@ -1,0 +1,421 @@
+/* Enhanced Active Members Page Styles */
+
+/* Color Classes */
+.text-gold {
+    color: #916f41 !important;
+  }
+  
+  .text-royal-purple {
+    color: #4B306A !important;
+  }
+  
+  .bg-royal-purple {
+    background-color: #4B306A !important;
+  }
+  
+  .bg-gradient-light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+  
+  .bg-gradient-royal {
+    background: linear-gradient(135deg, #4B306A 0%, #916f41 100%);
+  }
+  
+  .border-gold {
+    border-color: #916f41 !important;
+  }
+  
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .animate-fade-in-delay {
+    animation: fadeInUp 1s ease-out 0.3s both;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Enhanced Buttons */
+  .btn-royal-purple {
+    background: linear-gradient(135deg, #4B306A 0%, #582C83 100%);
+    border: none;
+    color: #fff !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(75, 48, 106, 0.3);
+  }
+  
+  .btn-royal-purple:hover,
+  .btn-royal-purple:focus {
+    background: linear-gradient(135deg, #3a2354 0%, #4B306A 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(75, 48, 106, 0.4);
+    color: #fff !important;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #4B306A 0%, #582C83 100%);
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(75, 48, 106, 0.3);
+  }
+  
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background: linear-gradient(135deg, #3a2354 0%, #4B306A 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(75, 48, 106, 0.4);
+  }
+  
+  .btn-outline-primary {
+    border-color: #4B306A;
+    color: #4B306A;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-outline-primary:hover,
+  .btn-outline-primary:focus {
+    background: linear-gradient(135deg, #4B306A 0%, #582C83 100%);
+    border-color: #4B306A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(75, 48, 106, 0.3);
+  }
+  
+  /* Section Headers */
+  .section-header {
+    color: #4B306A !important;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #4B306A, #916f41);
+    border-radius: 2px;
+  }
+  
+  .text-center .section-header::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .text-start .section-header::after {
+    left: 0;
+    transform: none;
+  }
+  
+  /* Page Header */
+  h1 {
+    color: #4B306A !important;
+  }
+  
+  /* Member Portal Section */
+  .member-login {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-top: 3px solid #916f41;
+  }
+  
+  .member-login .card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .member-login .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4B306A, #916f41);
+  }
+  
+  .member-login .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Members Directory Section */
+  .members-directory {
+    background: #fff;
+  }
+  
+  .members-directory h2 {
+    color: #4B306A;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .members-directory h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #4B306A, #916f41);
+    border-radius: 2px;
+  }
+  
+  /* Search and Filter Controls */
+  .form-control,
+  .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #4B306A;
+    box-shadow: 0 0 0 0.2rem rgba(75, 48, 106, 0.25);
+    transform: translateY(-2px);
+  }
+  
+  /* Member Cards */
+  .card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4B306A, #916f41);
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-title {
+    color: #4B306A;
+    font-weight: 700;
+  }
+  
+  .badge.bg-primary {
+    background: linear-gradient(135deg, #4B306A 0%, #916f41 100%) !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Profile Pictures */
+  .card img.rounded-circle {
+    border: 3px solid #916f41;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover img.rounded-circle {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(145, 111, 65, 0.3);
+  }
+  
+  /* Pagination */
+  .pagination .page-link {
+    color: #4B306A;
+    border-color: #e9ecef;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background: linear-gradient(135deg, #4B306A 0%, #582C83 100%);
+    border-color: #4B306A;
+    color: #fff;
+  }
+  
+  .pagination .page-link:hover {
+    background-color: rgba(75, 48, 106, 0.1);
+    border-color: #4B306A;
+    transform: translateY(-2px);
+  }
+  
+  /* Loading State */
+  .spinner-border.text-primary {
+    color: #4B306A !important;
+  }
+  
+  /* New Member Education Section */
+  .new-member-edu {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-top: 3px solid #916f41;
+  }
+  
+  .new-member-edu h2 {
+    color: #4B306A;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .new-member-edu h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #4B306A, #916f41);
+    border-radius: 2px;
+  }
+  
+  .new-member-edu h3 {
+    color: #4B306A;
+    font-weight: 700;
+  }
+  
+  .new-member-edu ul li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .new-member-edu ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #916f41;
+    font-weight: bold;
+  }
+  
+  .new-member-edu img {
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .new-member-edu img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Quick Links List */
+  .list-group-item {
+    border: none;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .list-group-item:hover {
+    background-color: rgba(75, 48, 106, 0.05);
+    transform: translateX(5px);
+  }
+  
+  .list-group-item a {
+    color: #4B306A;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .list-group-item a:hover {
+    color: #916f41;
+  }
+  
+  /* Results Summary */
+  .text-muted {
+    color: #6c757d !important;
+    font-weight: 500;
+  }
+  
+  /* Footer Enhancement */
+  footer {
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%) !important;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .display-4 {
+      font-size: 2.5rem;
+    }
+    
+    .display-6 {
+      font-size: 1.8rem;
+    }
+    
+    .card {
+      margin-bottom: 1rem;
+    }
+    
+    .member-login .row {
+      text-align: center;
+    }
+    
+    .pagination {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .pagination .page-item {
+      margin: 0.2rem;
+    }
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom spacing utilities */
+  .lh-lg {
+    line-height: 1.8 !important;
+  }
+  
+  /* Welcome message styling */
+  .text-success {
+    color: #916f41 !important;
+    font-weight: 700;
+  }
+  

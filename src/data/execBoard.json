@@ -1,0 +1,115 @@
+[
+  {
+    "name": "Tyler Avescat",
+    "title": "President",
+    "image": "/images/tyler.jpg",
+    "bio": "I oversee all chapter operations and ensure our fraternity maintains its high standards of excellence.",
+    "linkedin": "https://www.linkedin.com/in/tyler-avescat-98a492296/"
+  },
+  {
+    "name": "Dean Rothschild",
+    "title": "Vice President",
+    "image": "/images/Dean.jpeg",
+    "bio": "I support the President and manage internal chapter affairs to ensure smooth operations.",
+    "linkedin": "https://www.linkedin.com/in/dean-rothschild-3448b1296/"
+  },
+  {
+    "name": "Charlie Lakis",
+    "title": "Treasurer",
+    "image": "/images/lakis.jpg",
+    "bio": "I manage the chapter's finances and ensure responsible financial planning.",
+    "linkedin": "https://www.linkedin.com/in/charlielakis/"
+  },
+  {
+    "name": "Nicholas Petrocelli",
+    "title": "Philanthropy Chair",
+    "image": "/images/petro.jpg",
+    "bio": "I coordinate our charitable initiatives and community service projects.",
+    "linkedin": "https://www.linkedin.com/in/nicholas-petrocelli-98851a297/"
+  },
+  {
+    "name": "Camden Reuthe",
+    "title": "IFC EXEC",
+    "image": "/images/Camden.jpg",
+    "bio": "I oversee the maintenance and operations of the chapter house.",
+    "linkedin": "https://www.linkedin.com/in/charles-mckinney-99345427a/"
+  },
+  {
+    "name": "Matthew Koziol",
+    "title": "Risk Management Chair",
+    "image": "/images/Koziol.jpg",
+    "bio": "I ensure the safety and well-being of all chapter members at events.",
+    "linkedin": "https://www.linkedin.com/in/matthew-koziol-/"
+  },
+  {
+    "name": "Mike Freeman",
+    "title": "Recorder",
+    "image": "/images/freeman.jpg",
+    "bio": "I maintain chapter records and handle official communications.",
+    "linkedin": "https://www.linkedin.com/in/mike-freeman-626138200/"
+  },
+  {
+    "name": "Sam Goldstein",
+    "title": "Warden",
+    "image": "/images/goldstein.jpg",
+    "bio": "I maintain order and security during chapter meetings and events.",
+    "linkedin": "https://www.linkedin.com/in/sam-goldstein95/"
+  },
+  {
+    "name": "Michael Rivera",
+    "title": "Member Educator",
+    "image": "/images/Rivera.jpg",
+    "bio": "I coordinate educational programs and ensure member development.",
+    "linkedin": "https://www.linkedin.com/in/michael-rivera-843a5a297/"
+  },
+  {
+    "name": "Brooks Utter",
+    "title": "Brotherhood/Alumni Chair",
+    "image": "/images/butter.jpg",
+    "bio": "I strengthen brotherhood bonds and maintain alumni connections.",
+    "linkedin": "https://www.linkedin.com/in/brooks-utter-7a54b0297/"
+  },
+  {
+    "name": "Garrett Anderson",
+    "title": "Social Chair",
+    "image": "/images/Gandy.jpg",
+    "bio": "I plan and organize social events and activities for the chapter.",
+    "linkedin": "https://www.linkedin.com/in/garrettandersen/"
+  },
+  {
+    "name": "Rafael Angarita",
+    "title": "Social Chair",
+    "image": "/images/Rafa.jpg",
+    "bio": "I assist in planning and organizing social events and activities.",
+    "linkedin": "https://www.linkedin.com/in/rafael-angarita-885a48297/"
+  },
+  {
+    "name": "Max Purper",
+    "title": "Rush Chair",
+    "image": "/images/Purper.jpg",
+    "bio": "I coordinate recruitment efforts and welcome potential new members.",
+    "linkedin": "https://www.linkedin.com/in/max-purper-b6a933297/"
+  },
+  {
+    "name": "Marcelo Morales",
+    "title": "Rush Chair",
+    "image": "/images/Celo.jpg",
+    "bio": "I assist in coordinating recruitment efforts and member engagement.",
+    "linkedin": "https://www.linkedin.com/in/marcelo-morales-40b4b1297/"
+  },
+  {
+    "name": "Charlie McKinney",
+    "title": "House Manager",
+    "image": "/images/McKinney.jpg",
+    "bio": "I oversee the maintenance and operations of the chapter house.",
+    "linkedin": "https://www.linkedin.com/in/charles-mckinney-99345427a/"
+  },
+  
+  {
+    "name": "Nick Oursler",
+    "title": "House Manager",
+    "image": "/images/Oursler.jpg",
+    "bio": "I assist in managing the chapter house and its facilities.",
+    "linkedin": "https://www.linkedin.com/in/nicholasoursler/"
+  }
+]

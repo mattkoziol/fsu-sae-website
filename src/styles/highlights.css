@@ -1,0 +1,386 @@
+
+/* Highlights Page Custom Styles */
+
+/* Color Classes */
+.text-gold {
+  color: #916f41 !important;
+}
+
+.text-royal-purple {
+  color: #4B306A !important;
+}
+
+.bg-royal-purple {
+  background-color: #4B306A !important;
+}
+
+.bg-gold {
+  background-color: #916f41 !important;
+}
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.border-gold {
+  border-color: #916f41 !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 1s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
+
+/* Hero Section */
+.highlights-hero {
+  background: linear-gradient(135deg, #4B306A 0%, #916f41 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.highlights-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,0 1000,400 1000,1000 0,1000"/></svg>');
+  background-size: cover;
+}
+
+.hero-content {
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-title {
+  color: #fff !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero-divider {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #916f41, #fff);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* Section Headers */
+.section-header {
+  color: #4B306A !important;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+  display: inline-block;
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #4B306A, #916f41);
+  border-radius: 2px;
+}
+
+/* Event Highlights Section */
+.event-highlights {
+  background: #fff;
+}
+
+.event-card {
+  border: none !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4B306A, #916f41);
+  z-index: 1;
+}
+
+.event-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.event-image-container {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #4B306A 0%, #916f41 100%);
+}
+
+.event-image-container img {
+  height: 280px;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.3s ease;
+  padding: 10px;
+}
+
+.event-card:hover .event-image-container img {
+  transform: scale(1.02);
+}
+
+.event-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: end;
+  padding: 1.5rem;
+}
+
+.event-card:hover .event-overlay {
+  opacity: 1;
+}
+
+.video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(75, 48, 106, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.video-play-button:hover {
+  background: rgba(75, 48, 106, 1);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Enhanced Buttons */
+.btn-royal-purple {
+  background: linear-gradient(135deg, #4B306A 0%, #582C83 100%) !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(75, 48, 106, 0.3);
+}
+
+.btn-royal-purple:hover,
+.btn-royal-purple:focus {
+  background: linear-gradient(135deg, #3a2354 0%, #4B306A 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(75, 48, 106, 0.4) !important;
+  color: #fff !important;
+}
+
+/* Recognition Wall Section */
+.recognition-wall {
+  position: relative;
+}
+
+.recognition-card {
+  border: none !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.recognition-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4B306A, #916f41);
+  z-index: 1;
+}
+
+.recognition-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Recognition Card Image Container - Better handling for portraits */
+.recognition-card .card-img-top {
+  width: 100% !important;
+  height: 280px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 1rem 1rem 0 0 !important;
+  transition: transform 0.3s ease;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 10px;
+}
+
+.recognition-card:hover .card-img-top {
+  transform: scale(1.02);
+}
+
+.recognition-icon {
+  position: relative;
+}
+
+.recognition-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(75, 48, 106, 0.1), rgba(145, 111, 65, 0.1));
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Stats Section */
+.stat-item {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-3px);
+}
+
+/* Badges */
+.badge.bg-royal-purple {
+  background: linear-gradient(135deg, #4B306A 0%, #916f41 100%) !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.badge.bg-gold {
+  background: linear-gradient(135deg, #916f41 0%, #b8824f 100%) !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .highlights-hero {
+    min-height: 50vh;
+    padding: 3rem 0;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .event-image-container img {
+    height: 240px;
+  }
+  
+  .event-overlay {
+    padding: 1rem;
+  }
+  
+  .video-play-button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .stat-item h3 {
+    font-size: 2rem !important;
+  }
+  
+  .recognition-card .card-img-top {
+    height: 240px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .event-image-container img {
+    height: 200px;
+  }
+  
+  .section-header {
+    font-size: 1.8rem !important;
+  }
+  
+  .recognition-card .card-img-top {
+    height: 200px !important;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom spacing utilities */
+.lh-lg {
+  line-height: 1.8 !important;
+}

@@ -1,0 +1,304 @@
+/* Enhanced Alumni Page Styles */
+
+/* Color Classes */
+.text-gold {
+  color: #916f41 !important;
+}
+
+.text-royal-purple {
+  color: #4B306A !important;
+}
+
+.bg-royal-purple {
+  background-color: #4B306A !important;
+}
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.bg-gradient-royal {
+  background: linear-gradient(135deg, #4B306A 0%, #916f41 100%);
+}
+
+.border-gold {
+  border-color: #916f41 !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 1s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+/* Enhanced Buttons */
+.btn-royal-purple {
+  background: linear-gradient(135deg, #4B306A 0%, #582C83 100%);
+  border: none;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(75, 48, 106, 0.3);
+}
+
+.btn-royal-purple:hover,
+.btn-royal-purple:focus {
+  background: linear-gradient(135deg, #3a2354 0%, #4B306A 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(75, 48, 106, 0.4);
+  color: #fff !important;
+}
+
+.btn-old-gold {
+  background: linear-gradient(135deg, #916f41 0%, #a67c52 100%);
+  border: none;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(145, 111, 65, 0.3);
+}
+
+.btn-old-gold:hover,
+.btn-old-gold:focus {
+  background: linear-gradient(135deg, #7a5a37 0%, #916f41 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(145, 111, 65, 0.4);
+  color: #fff !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4B306A 0%, #582C83 100%);
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(75, 48, 106, 0.3);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(135deg, #3a2354 0%, #4B306A 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(75, 48, 106, 0.4);
+}
+
+.btn-outline-primary {
+  border-color: #4B306A;
+  color: #4B306A;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background: linear-gradient(135deg, #4B306A 0%, #582C83 100%);
+  border-color: #4B306A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(75, 48, 106, 0.3);
+}
+
+/* Section Headers */
+.section-header {
+  color: #4B306A !important;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #4B306A, #916f41);
+  border-radius: 2px;
+}
+
+.text-center .section-header::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.text-start .section-header::after {
+  left: 0;
+  transform: none;
+}
+
+/* Page Header */
+h1 {
+  color: #4B306A !important;
+}
+
+/* Enhanced Cards */
+.card {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4B306A, #916f41);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  color: #4B306A;
+  font-weight: 700;
+}
+
+.badge.bg-primary {
+  background: linear-gradient(135deg, #4B306A 0%, #916f41 100%) !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Icons */
+.icon-royal-purple {
+  color: #4B306A !important;
+}
+
+/* Loading State */
+.spinner-border.text-primary {
+  color: #4B306A !important;
+}
+
+/* Images - Fixed styling to ensure proper display */
+.alumni-welcome img,
+.alumni-giving img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.alumni-welcome img:hover,
+.alumni-giving img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Remove any conflicting image styles */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Welcome message styling */
+.text-success {
+  color: #916f41 !important;
+  font-weight: 700;
+}
+
+/* RSVP Section Enhancements */
+.alumni-rsvp {
+  border-top: 3px solid #916f41;
+}
+
+/* Custom spacing utilities */
+.lh-lg {
+  line-height: 1.8 !important;
+}
+
+/* Alumni specific sections */
+.alumni-welcome {
+  background: #fff;
+}
+
+.alumni-events {
+  border-top: 3px solid #916f41;
+}
+
+.alumni-giving {
+  border-top: 3px solid #916f41;
+}
+
+.alumni-networking {
+  border-top: 3px solid #916f41;
+}
+
+/* Enhanced List Styling */
+.list-unstyled li {
+  transition: all 0.3s ease;
+}
+
+.list-unstyled li:hover {
+  transform: translateX(5px);
+}
+
+/* Footer Enhancement */
+footer {
+  background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2.5rem;
+  }
+  
+  .display-6 {
+    font-size: 1.8rem;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .alumni-welcome .row {
+    text-align: center;
+  }
+  
+  .d-flex.gap-3 {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+.opacity-10 {
+  opacity: 0.1 !important;
+}
