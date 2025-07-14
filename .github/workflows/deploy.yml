@@ -34,7 +34,7 @@ jobs:
     # Build the project
     - name: Build project
       run: |
-        NODE_ENV=production npm run build
+        CI=false NODE_ENV=production npm run build
       env:
         REACT_APP_AWS_REGION: ${{ secrets.REACT_APP_AWS_REGION }}
         REACT_APP_COGNITO_USER_POOL_ID: ${{ secrets.REACT_APP_COGNITO_USER_POOL_ID }}
