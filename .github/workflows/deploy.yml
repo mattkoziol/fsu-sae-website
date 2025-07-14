@@ -1,0 +1,71 @@
+# .github/workflows/deploy.yml
+name: Deploy FSU SAE Frontend
+
+on:
+  push:
+    branches: [ main, master ]  # Deploy when pushing to main/master
+  pull_request:
+    branches: [ main, master ]  # Also run on PRs for testing
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    # Setup Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    # Install dependencies
+    - name: Install dependencies
+      run: npm ci
+      
+    # Run tests (optional)
+    - name: Run tests
+      run: npm test -- --coverage --watchAll=false
+      
+    # Build the project
+    - name: Build project
+      run: |
+        NODE_ENV=production npm run build
+      env:
+        REACT_APP_AWS_REGION: ${{ secrets.REACT_APP_AWS_REGION }}
+        REACT_APP_COGNITO_USER_POOL_ID: ${{ secrets.REACT_APP_COGNITO_USER_POOL_ID }}
+        REACT_APP_COGNITO_CLIENT_ID: ${{ secrets.REACT_APP_COGNITO_CLIENT_ID }}
+        REACT_APP_COGNITO_IDENTITY_POOL_ID: ${{ secrets.REACT_APP_COGNITO_IDENTITY_POOL_ID }}
+        REACT_APP_S3_BUCKET_NAME: ${{ secrets.REACT_APP_S3_BUCKET_NAME }}
+        REACT_APP_API_BASE_URL: ${{ secrets.REACT_APP_API_BASE_URL }}
+        REACT_APP_ENVIRONMENT: production
+        
+    # Configure AWS credentials
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+        
+    # Deploy to S3
+    - name: Deploy to S3
+      run: |
+        aws s3 sync build/ s3://fsusae-frontend-2025 --delete --exact-timestamps
+        
+    # Invalidate CloudFront
+    - name: Invalidate CloudFront
+      run: |
+        aws cloudfront create-invalidation --distribution-id d2ybdfdo1dlwuw --paths "/*"
+        
+    # Send deployment notification (optional)
+    - name: Deployment notification
+      if: success()
+      run: |
+        echo "🚀 Deployment successful!"
+        echo "Website: https://d2ybdfdo1dlwuw.cloudfront.net"
+        echo "Custom domain: https://fsusae.com"
