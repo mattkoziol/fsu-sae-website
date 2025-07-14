@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Sigma Alpha Epsilon – Florida State University (FSU SAE) Web Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the official web platform for the Florida Beta Chapter of Sigma Alpha Epsilon at Florida State University. The site is a full-stack, cloud-native application designed to serve active members, alumni, and the broader FSU community.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Project Overview
+This platform provides a secure, modern, and mobile-friendly experience for:
+- Member directory
+- Event highlights and philanthropy
+- Newsletter subscriptions
+- Account management and profile customization
+- Alumni engagement and RSVP
+- Chapter branding and outreach
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend
+- **React** (with React Router)
+- **Bootstrap 5** (CDN)
+- **Font Awesome** (CDN)
+- **Custom CSS** for FSU SAE branding and responsive design
+- **Axios** and Fetch API for HTTP requests
+- **LocalStorage** for JWT and user info
 
-### `npm test`
+### Backend
+- **Node.js** (v18+)
+- **Express.js**
+- **AWS SDK v2 & v3** (Cognito, S3, DynamoDB)
+- **jsonwebtoken** for JWT verification
+- **CORS** for secure cross-origin requests
+- **Multer & multer-s3** for file uploads
+- **dotenv** for environment configuration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### AWS & Cloud Services
+- **Amazon Cognito**: User authentication, custom attributes (role, invite code), JWT issuance
+- **Amazon DynamoDB**: Member directory, alumni RSVP, newsletter subscribers
+- **Amazon S3**: Profile picture storage and serving
+- **Elastic Beanstalk**: Backend deployment (with environment config)
+- **CloudFront/S3 Static Hosting**: Frontend deployment
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Key Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Authentication & Security
+- AWS Cognito user pool with custom attributes (`role`, `inviteCode`)
+- Secure signup (with invite code), login, and email verification
+- JWT-based authentication; tokens verified against Cognito public keys
+- Protected API routes (middleware checks JWT validity)
+- Role-based access (active member, alumni)
+- No passwords stored in the database (Cognito handles auth)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Member Directory
+- Member directory (DynamoDB-backed)
+- Profile management: name, email, profile picture (S3), LinkedIn, major, graduation year
+- Executive board listing
 
-### `npm run eject`
+### Alumni Engagement
+- Alumni RSVP for events (DynamoDB-backed)
+- Alumni-specific content and account settings
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Newsletter
+- Newsletter subscription form (with email validation and duplicate prevention)
+- Subscriber list stored in DynamoDB
+- Latest newsletter preview and modal image carousel
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Events & Philanthropy
+- Rush events section with dynamic content
+- Philanthropy highlights (e.g., Paddy Murphy Week, Panhellenic competitions)
+- PanelCarousel for showcasing chapter participation in campus events
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### UI/UX & Branding
+- Custom color palette: Royal Purple & Old Gold
+- Modern, mobile-responsive layout
+- Animated section headers, hero banners, and button effects
+- Consistent footer and navigation across all pages
+- Social media integration (Instagram, Facebook, LinkedIn)
+- Accessibility and smooth scrolling enhancements
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### General
+- CORS and network configuration for local and production environments
+- Environment-based API URLs (frontend and backend)
+- Robust error handling and user feedback
+- No sensitive credentials or setup instructions exposed in the codebase
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Note
+This repository is for the official FSU SAE website. It is not intended for public reuse or deployment by others. All rights reserved.
