@@ -60,7 +60,7 @@ jobs:
     # Invalidate CloudFront
     - name: Invalidate CloudFront
       run: |
-        aws cloudfront create-invalidation --distribution-id d2ybdfdo1dlwuw --paths "/*"
+        aws cloudfront create-invalidation --distribution-id E37MGVZR3PF96H --paths "/*"
         
     # Send deployment notification (optional)
     - name: Deployment notification
