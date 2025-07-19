@@ -12,7 +12,7 @@ const ActiveMembers = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState(6);
+  const [cardsPerPage, setCardsPerPage] = useState(12); // Increased from 6 to 12
   const navigate = useNavigate();
 
   // Memoize fetchMembers to avoid unnecessary re-renders
@@ -70,6 +70,47 @@ const ActiveMembers = () => {
   useEffect(() => {
     setCurrentPage(1);
   }, [searchValue, classFilter]);
+
+  // Generate page numbers with ellipsis for large numbers
+  const getPageNumbers = () => {
+    const pages = [];
+    const maxVisiblePages = 5; // Show max 5 page numbers at once
+    
+    if (totalPages <= maxVisiblePages) {
+      // Show all pages if total is small
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Show pages around current page with ellipsis
+      if (currentPage <= 3) {
+        // Near the beginning
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        // Near the end
+        pages.push(1);
+        pages.push('...');
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        // In the middle
+        pages.push(1);
+        pages.push('...');
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      }
+    }
+    
+    return pages;
+  };
 
   return (
     <div className="bg-gradient-light min-vh-100">
@@ -200,7 +241,7 @@ const ActiveMembers = () => {
             <>
               <div className="row g-4 animate-fade-in">
                 {currentMembers.map((member, index) => (
-                  <div key={index} className="col-md-6 col-lg-4">
+                  <div key={index} className="col-md-6 col-lg-4 col-xl-3">
                     <div className="card h-100 hover-lift">
                       <div className="card-body text-center d-flex flex-column">
                         <div className="mb-3" style={{ height: '80px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -249,7 +290,7 @@ const ActiveMembers = () => {
                 <div className="row mt-5">
                   <div className="col-12">
                     <nav aria-label="Members pagination" className="animate-fade-in">
-                      <ul className="pagination justify-content-center">
+                      <ul className="pagination justify-content-center flex-wrap">
                         {/* Previous button */}
                         <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                           <button 
@@ -261,15 +302,19 @@ const ActiveMembers = () => {
                           </button>
                         </li>
 
-                        {/* Page numbers */}
-                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
-                          <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
-                            <button 
-                              className="page-link" 
-                              onClick={() => paginate(number)}
-                            >
-                              {number}
-                            </button>
+                        {/* Page numbers with ellipsis */}
+                        {getPageNumbers().map((number, index) => (
+                          <li key={index} className={`page-item ${number === '...' ? 'disabled' : ''} ${currentPage === number ? 'active' : ''}`}>
+                            {number === '...' ? (
+                              <span className="page-link">...</span>
+                            ) : (
+                              <button 
+                                className="page-link" 
+                                onClick={() => paginate(number)}
+                              >
+                                {number}
+                              </button>
+                            )}
                           </li>
                         ))}
 
