@@ -1,6 +1,12 @@
 
 /* Enhanced About Page Styles */
 
+/* Prevent horizontal scrolling */
+body, html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 /* Hero Section */
 .hero-section {
   background: linear-gradient(135deg, #4B306A 0%, #582C83 50%, #3a2354 100%);
@@ -284,6 +290,23 @@ footer .social-links a:hover {
   
   .milestone-item i {
     margin: 0 !important;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  .container {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .col-md-6, .col-lg-6, .col-lg-3 {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 

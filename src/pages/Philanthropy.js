@@ -5,7 +5,7 @@ import PanelCarousel from '../components/PanelCarousel';
 
 const Philanthropy = () => {
   return (
-    <div>
+    <div className="bg-gradient-light min-vh-100">
       {/* Main Philanthropy Section */}
       <section className="main-philanthropy py-5 mt-5">
         <div className="container">

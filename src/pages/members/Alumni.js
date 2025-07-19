@@ -173,7 +173,7 @@ const Alumni = () => {
                     <i className="fas fa-football-ball fa-3x text-gold"></i>
                   </div>
                   <h3 className="card-title text-royal-purple mb-3">Miami vs FSU Tailgate</h3>
-                  <span className="badge bg-primary mb-3 px-3 py-2 fs-6">Fall 2024</span>
+                  <span className="badge bg-primary mb-3 px-3 py-2 fs-6">Fall 2025</span>
                   <p className="card-text lead mb-4">Join fellow alumni for an exciting tailgate before the Miami vs FSU football game. Connect with brothers, enjoy great food, and cheer on the Seminoles!</p>
                   <div className="bg-gradient-light rounded p-3">
                     <p className="text-muted mb-0 fw-semibold">

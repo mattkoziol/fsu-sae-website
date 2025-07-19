@@ -7,7 +7,7 @@ import Typewriter from '../components/Typewriter';
 
 const About = () => {
   return (
-    <div>
+    <div className="bg-gradient-light min-vh-100">
       {/* Simple Page Header - Left Aligned */}
       <div className="container py-5">
         <div className="text-start">
