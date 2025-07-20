@@ -15,7 +15,7 @@ const Highlights = () => {
       title: "Paddy Murphy Week",
       image: "/images/galleries/Paddy-Murphy-Gallery/Photo1.jpg",
       video: null,
-      description: "An unforgettable evening celebrating brotherhood and tradition.",
+      description: "Our largest philanthropic tradition, Paddy Murphy Week features a full week of daily events, bringing brothers and the campus community together to support a great cause.",
       date: "March 2025",
       gallery: [
         "/images/galleries/Paddy-Murphy-Gallery/Photo1.jpg",
@@ -27,9 +27,9 @@ const Highlights = () => {
     {
       id: 2,
       title: "SAEBIZA",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&h=400&fit=crop",
+      image: "/images/galleries/saebiza/Photo1.jpg",
       video: null,
-      description: "Brothers gathered to support FSU and celebrate our traditions.",
+      description: "Our annual spring party, SAEBIZA, brought the chapter together for a night of great music, good vibes, and lasting memories with friends.",
       date: "February 2025"
     },
     {

@@ -7,6 +7,7 @@ import newsletterPreview from '../assets/newsletter/newsletter-preview.png';
 import newsletter1 from '../assets/newsletter/newsletter1.png';
 import newsletter2 from '../assets/newsletter/newsletter2.png';
 import newsletter3 from '../assets/newsletter/newsletter3.png';
+import saeHouse from '../assets/housephoto.jpg';
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5001';
 
 function Home() {

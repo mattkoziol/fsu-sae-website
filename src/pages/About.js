@@ -46,8 +46,8 @@ const About = () => {
                       <span className="fs-5">Current House Claimed in 2017</span>
                     </div>
                     <div className="milestone-item">
-                      <i className="fas fa-trophy text-gold me-3 fa-lg"></i>
-                      <span className="fs-5">Multiple Greek Week Championships</span>
+                      <i className="fas fa-users text-gold me-3 fa-lg"></i>
+                      <span className="fs-5">Largest Fraternity on Campus</span>
                     </div>
                   </div>
                 </div>

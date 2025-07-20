@@ -12,35 +12,42 @@ const ActiveMembers = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage, setCardsPerPage] = useState(12); // Increased from 6 to 12
+  const [cardsPerPage, setCardsPerPage] = useState(12); // Default to 12
   const navigate = useNavigate();
 
-  // Memoize fetchMembers to avoid unnecessary re-renders
-  
-
- // Auth check effect (runs once)
- useEffect(() => {
-  const storedUser = JSON.parse(localStorage.getItem('user'));
-  console.log('ActiveMembers: storedUser', storedUser);
-  setUser(storedUser);
-  
-  // Call fetchMembers directly without dependency
-  const loadMembers = async () => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/api/auth/members`);
-      setMembers(response.data.members);
-    } catch (error) {
-      console.error('Error fetching members:', error);
-      setMembers([]);
-    } finally {
-      setLoading(false);
+  // Dynamically set cardsPerPage based on screen size
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 768) {
+        setCardsPerPage(6); // Mobile: 6 per page
+      } else {
+        setCardsPerPage(12); // Desktop/tablet: 12 per page
+      }
     }
-  };
-  
-  loadMembers();
-}, []); // Empty dependency array - only runs once on mount
+    handleResize(); // Set on mount
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-// Data fetching effect (runs once)
+  // Fetch members from backend
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    setUser(storedUser);
+    const loadMembers = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/auth/members`);
+        setMembers(response.data.members);
+      } catch (error) {
+        console.error('Error fetching members:', error);
+        setMembers([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadMembers();
+  }, []);
+
+  // Data fetching effect (runs once)
 /*useEffect(() => {
   fetchMembers();
 }, [fetchMembers]);*/
@@ -131,11 +138,11 @@ const ActiveMembers = () => {
               <p className="lead mb-4">Access member-only resources, upcoming events, and chapter information.</p>
               {user && user.role === 'member' ? (
                 <div className="member-welcome">
-                  <h4 className="text-success mb-3">
+                  <h4 className="mb-3" style={{ color: '#916f41', fontWeight: 700 }}>
                     <i className="fas fa-handshake me-2"></i>
                     Welcome Brother {user.name.split(' ')[0]}
                   </h4>
-                  <Link to="/account" className="btn btn-outline-primary btn-lg hover-lift">
+                  <Link to="/account" className="btn btn-royal-purple btn-lg hover-lift">
                     <i className="fas fa-cog me-2"></i>Account Settings
                   </Link>
                 </div>

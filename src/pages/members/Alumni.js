@@ -130,7 +130,7 @@ const Alumni = () => {
               <h2 className="section-header text-start mb-4">Welcome Back, Alumni Brothers</h2>
               {user && user.role === 'alumni' ? (
                 <div className="alumni-welcome-user mb-4">
-                  <h4 className="text-success mb-3">
+                  <h4 className="mb-3" style={{ color: '#916f41', fontWeight: 700 }}>
                     <i className="fas fa-handshake me-2"></i>
                     Welcome Brother {user.name.split(' ')[0]}
                   </h4>
@@ -246,11 +246,8 @@ const Alumni = () => {
               </div>
               
               <div className="d-flex flex-wrap gap-3">
-                <a href="#" className="btn btn-royal-purple btn-lg hover-lift">
+                <a href="https://sae.crowdchange.co/50202" className="btn btn-royal-purple btn-lg hover-lift" target="_blank" rel="noopener noreferrer">
                   <i className="fas fa-heart me-2"></i>Make a Donation
-                </a>
-                <a href="#" className="btn btn-outline-primary btn-lg hover-lift">
-                  <i className="fas fa-info-circle me-2"></i>Learn More
                 </a>
               </div>
             </div>
