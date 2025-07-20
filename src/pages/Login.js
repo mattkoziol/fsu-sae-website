@@ -14,6 +14,7 @@ const Login = () => {
     inviteCode: ''
   });
   const [message, setMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -105,15 +106,37 @@ const Login = () => {
           required
           style={{ width: '100%', marginBottom: '10px', padding: '8px' }}
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-          style={{ width: '100%', marginBottom: '10px', padding: '8px' }}
-        />
+        <div style={{ position: 'relative', width: '100%', marginBottom: '10px' }}>
+          <input
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            style={{ width: '100%', padding: '8px', paddingRight: '40px' }}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+            style={{
+              position: 'absolute',
+              right: '8px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: '#4B306A',
+              fontSize: '1.2em',
+              padding: 0
+            }}
+            tabIndex={-1}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+          >
+            <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+          </button>
+        </div>
         {isSignup && (
           <div style={{ marginBottom: '10px', fontSize: '0.95em', color: '#4B306A', background: '#f8f9fa', border: '1px solid #916f41', borderRadius: '6px', padding: '10px' }}>
             <strong>Password requirements:</strong>
