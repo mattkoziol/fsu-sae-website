@@ -26,6 +26,9 @@
   border-color: #916f41 !important;
 }
 
+.hero .text-royal-purple {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0px 0px 4px rgba(255, 255, 255, 0.3);
+}
 /* Animations */
 @keyframes fadeInUp {
   from {
@@ -97,7 +100,7 @@
   box-shadow: 0 4px 15px rgba(75, 48, 106, 0.3);
 }
 
-/* Section Headers */
+/* Section Headers - removed ::after to prevent double underlines */
 .section-header {
   color: #4B306A !important;
   font-weight: 700;
@@ -105,28 +108,21 @@
   padding-bottom: 15px;
 }
 
-
-
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #4B306A 0%, #916f41 100%);
+  background-image: url('../assets/housephoto.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
   position: relative;
   overflow: hidden;
-  min-height: 500px;
+  min-height: 60vh;
   display: flex;
   align-items: center;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.03)" points="0,0 1000,300 1000,1000 0,1000"/></svg>');
-  background-size: cover;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-overlay {
@@ -135,7 +131,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .hero-content {
@@ -454,8 +450,9 @@ footer {
   }
   
   .hero {
-    min-height: 400px;
-    padding: 3rem 0;
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center;
   }
   
   .social-icons {
