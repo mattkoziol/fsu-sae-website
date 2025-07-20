@@ -353,10 +353,15 @@ function Home() {
               </a>
             </div>
             <div>
-              <button className="btn btn-outline-royal-purple btn-lg px-5 py-3 hover-lift">
+              <a 
+                className="btn btn-outline-royal-purple btn-lg px-5 py-3 hover-lift"
+                href="mailto:flbetasae@gmail.com?subject=SAE%20Alumni%20Contact"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fas fa-graduation-cap me-2"></i>
                 Alumni Contact
-              </button>
+              </a>
             </div>
           </div>
         </div>

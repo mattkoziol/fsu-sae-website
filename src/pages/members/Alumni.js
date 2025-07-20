@@ -301,8 +301,14 @@ const Alumni = () => {
                   </div>
                   <h3 className="card-title text-royal-purple mb-3">Mentorship Program</h3>
                   <p className="card-text mb-4 lh-lg">Guide current undergraduates in their personal and professional development journey.</p>
-                  <a href="#" className="btn btn-royal-purple hover-lift">
-                    <i className="fas fa-handshake me-2"></i>Become a Mentor
+                  <a 
+                    href="mailto:flbetasae@gmail.com?subject=SAE%20Mentorship%20Interest" 
+                    className="btn btn-royal-purple hover-lift"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fas fa-handshake me-2"></i>
+                    Become a Mentor
                   </a>
                 </div>
               </div>
