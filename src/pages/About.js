@@ -23,7 +23,7 @@ const About = () => {
           <div className="row align-items-center g-5">
             <div className="col-lg-6 mb-4 mb-lg-0">
               <div className="image-container">
-                <img src="/images/housephoto.jpg" alt="SAE Chapter House" className="img-fluid rounded-4 shadow-lg hover-zoom" />
+                <img src="/images/housephoto1.jpg" alt="SAE Chapter House" className="img-fluid rounded-4 shadow-lg hover-zoom" />
                 <div className="overlay-badge">
                   <span className="badge bg-royal-purple fs-6 p-3">Est. 1949</span>
                 </div>
