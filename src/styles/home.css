@@ -10,6 +10,10 @@
   color: #4B306A !important;
 }
 
+.hero .text-royal-purple {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0px 0px 4px rgba(255, 255, 255, 0.3);
+}
+
 .bg-royal-purple {
   background-color: #4B306A !important;
 }
@@ -26,9 +30,6 @@
   border-color: #916f41 !important;
 }
 
-.hero .text-royal-purple {
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0px 0px 4px rgba(255, 255, 255, 0.3);
-}
 /* Animations */
 @keyframes fadeInUp {
   from {
@@ -136,6 +137,7 @@
 
 .hero-content {
   z-index: 2;
+  margin-top: 2rem;
 }
 
 .hero-title {
@@ -453,6 +455,10 @@ footer {
     min-height: 50vh;
     background-size: cover;
     background-position: center;
+  }
+  
+  .hero-content {
+    margin-top: 4rem;
   }
   
   .social-icons {
