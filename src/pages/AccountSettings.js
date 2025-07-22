@@ -58,7 +58,7 @@ const handleProfilePictureChange = async (e) => {
   if (file) {
     try {
       // Check file size (max 5MB)
-      if (file.size > 5 * 1024 * 1024) {
+      if (file.size > 10 * 1024 * 1024) {
         setMessage('Image file is too large. Please select a smaller image (max 5MB).');
         setTimeout(() => setMessage(''), 3000);
         return;
