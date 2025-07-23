@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5001';
 
 function AccountSettings() {
@@ -17,7 +18,6 @@ function AccountSettings() {
   });
   const [message, setMessage] = useState('');
   const [hasChanges, setHasChanges] = useState(false);
-  const [showBackButton, setShowBackButton] = useState(false);
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
@@ -52,29 +52,61 @@ function AccountSettings() {
     setEditingField(null);
   };
 
-  // Also update handleProfilePictureChange to use correct token
-const handleProfilePictureChange = async (e) => {
-  const file = e.target.files[0];
-  if (file) {
-    try {
-      // Check file size (max 5MB)
-      if (file.size > 10 * 1024 * 1024) {
-        setMessage('Image file is too large. Please select a smaller image (max 5MB).');
-        setTimeout(() => setMessage(''), 3000);
-        return;
-      }
+  // ✅ IMPROVED: Better file validation and error handling
+  const validateFile = (file) => {
+    // Check file size (10MB limit to match backend)
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    if (file.size > maxSize) {
+      return {
+        valid: false,
+        message: `Image is too large (${(file.size / 1024 / 1024).toFixed(1)}MB). Maximum size is 10MB.`
+      };
+    }
 
-      // Check file type
-      if (!file.type.startsWith('image/')) {
-        setMessage('Please select an image file.');
-        setTimeout(() => setMessage(''), 3000);
+    // Check file type - match backend exactly
+    const allowedTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/png',
+      'image/webp',
+      'image/gif'
+    ];
+
+    if (!allowedTypes.includes(file.type.toLowerCase())) {
+      return {
+        valid: false,
+        message: `File type "${file.type}" not supported. Please use JPEG, PNG, WebP, or GIF.`
+      };
+    }
+
+    return { valid: true };
+  };
+
+  const handleProfilePictureChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      // ✅ IMPROVED: Detailed file validation
+      console.log('📁 Selected file:', {
+        name: file.name,
+        type: file.type,
+        size: `${(file.size / 1024 / 1024).toFixed(2)}MB`
+      });
+
+      const validation = validateFile(file);
+      if (!validation.valid) {
+        setMessage(validation.message);
+        setTimeout(() => setMessage(''), 5000);
+        // Clear the file input
+        e.target.value = '';
         return;
       }
 
       setUploading(true);
       setMessage('Uploading image...');
 
-      // ✅ FIXED: Get correct token
+      // Get authentication token
       const storedUser = JSON.parse(localStorage.getItem('user'));
       let token = localStorage.getItem('token');
       
@@ -83,17 +115,35 @@ const handleProfilePictureChange = async (e) => {
         localStorage.setItem('token', token);
       }
 
+      if (!token) {
+        setMessage('Authentication required. Please log in again.');
+        setTimeout(() => {
+          localStorage.clear();
+          window.location.href = '/login';
+        }, 2000);
+        return;
+      }
+
       // Create FormData for file upload
       const formDataUpload = new FormData();
       formDataUpload.append('profilePicture', file);
+
+      console.log('🚀 Starting upload to:', `${API_BASE_URL}/api/upload/profile-picture`);
 
       // Upload to S3 via backend
       const response = await axios.post(`${API_BASE_URL}/api/upload/profile-picture`, formDataUpload, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}` // ✅ ADDED: Authorization header
+          'Authorization': `Bearer ${token}`
+        },
+        timeout: 30000, // 30 second timeout for large files
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          setMessage(`Uploading... ${percentCompleted}%`);
         }
       });
+
+      console.log('✅ Upload response:', response.data);
 
       if (response.data.success) {
         // Update form data with S3 URL
@@ -105,13 +155,105 @@ const handleProfilePictureChange = async (e) => {
         setMessage('Image uploaded successfully!');
         setTimeout(() => setMessage(''), 3000);
       } else {
-        setMessage('Error uploading image. Please try again.');
-        setTimeout(() => setMessage(''), 3000);
+        console.error('❌ Backend returned failure:', response.data);
+        setMessage(`Upload failed: ${response.data.message || 'Unknown error from server'}`);
+        setTimeout(() => setMessage(''), 5000);
+      }
+
+    } catch (error) {
+      console.error('❌ Upload error details:', {
+        message: error.message,
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        data: error.response?.data,
+        code: error.code
+      });
+
+      let errorMessage = 'Upload failed: ';
+
+      // ✅ IMPROVED: Specific error handling
+      if (error.code === 'ECONNABORTED') {
+        errorMessage += 'Upload timed out. File may be too large or connection is slow.';
+      } else if (error.response?.status === 401) {
+        errorMessage = 'Session expired. Please log in again.';
+        setTimeout(() => {
+          localStorage.clear();
+          window.location.href = '/login';
+        }, 2000);
+      } else if (error.response?.status === 413) {
+        errorMessage += 'File is too large for the server. Try a smaller image.';
+      } else if (error.response?.status === 400) {
+        errorMessage += error.response.data?.message || 'Invalid file or request.';
+      } else if (error.response?.status === 500) {
+        errorMessage += 'Server error. Please try again later.';
+      } else if (error.code === 'NETWORK_ERROR' || !error.response) {
+        errorMessage += 'Network error. Check your connection and try again.';
+      } else {
+        errorMessage += error.response?.data?.message || error.message || 'Unknown error occurred.';
+      }
+
+      setMessage(errorMessage);
+      setTimeout(() => setMessage(''), 8000);
+
+    } finally {
+      setUploading(false);
+      // Clear the file input so user can try the same file again if needed
+      e.target.value = '';
+    }
+  };
+
+  // ✅ IMPROVED: Better save function with error handling
+  const handleSave = async () => {
+    try {
+      setMessage('Saving profile...');
+      
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+      let token = localStorage.getItem('token');
+      
+      if (!token && storedUser?.tokens?.AccessToken) {
+        token = storedUser.tokens.AccessToken;
+        localStorage.setItem('token', token);
+      }
+      
+      if (!token) {
+        setMessage('Authentication token not found. Please log in again.');
+        setTimeout(() => {
+          localStorage.clear();
+          window.location.href = '/login';
+        }, 2000);
+        return;
+      }
+
+      console.log('💾 Saving profile data:', formData);
+
+      const response = await axios.put(
+        `${API_BASE_URL}/api/auth/update-profile`,
+        {
+          email: user.email,
+          ...formData
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      );
+
+      if (response.data.success) {
+        // Update localStorage with new user data
+        const updatedUser = { ...user, ...formData };
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        setUser(updatedUser);
+        setHasChanges(false);
+        setMessage('Profile updated successfully!');
+        setTimeout(() => setMessage(''), 5000);
+      } else {
+        setMessage(`Save failed: ${response.data.message || 'Unknown error'}`);
+        setTimeout(() => setMessage(''), 5000);
       }
     } catch (error) {
-      console.error('Error uploading image:', error);
+      console.error('❌ Save error:', error);
       
-      // Handle 401 Unauthorized
       if (error.response?.status === 401) {
         setMessage('Session expired. Please log in again.');
         setTimeout(() => {
@@ -121,86 +263,14 @@ const handleProfilePictureChange = async (e) => {
         return;
       }
       
-      setMessage('Error uploading image. Please try again.');
-      setTimeout(() => setMessage(''), 3000);
-    } finally {
-      setUploading(false);
-    }
-  }
-};
-
-  // Fixed handleSave function in AccountSettings.js
-const handleSave = async () => {
-  try {
-    setMessage('Saving profile...');
-    
-    // ✅ FIXED: Get Access Token from user object as fallback
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    let token = localStorage.getItem('token');
-    
-    // If token from localStorage is not working, try getting Access Token from user object
-    if (!token && storedUser?.tokens?.AccessToken) {
-      token = storedUser.tokens.AccessToken;
-      // Update localStorage with correct token for future use
-      localStorage.setItem('token', token);
-    }
-    
-    if (!token) {
-      setMessage('Authentication token not found. Please log in again.');
-      setTimeout(() => {
-        localStorage.clear();
-        window.location.href = '/login';
-      }, 2000);
-      return;
-    }
-
-    const response = await axios.put(
-      `${API_BASE_URL}/api/auth/update-profile`,
-      {
-        email: user.email,
-        ...formData
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      }
-    );
-
-    if (response.data.success) {
-      // Update localStorage with new user data
-      const updatedUser = { ...user, ...formData };
-      localStorage.setItem('user', JSON.stringify(updatedUser));
-      setUser(updatedUser);
-      setHasChanges(false);
-      setMessage('Profile updated successfully!');
-      setShowBackButton(true);
+      setMessage(`Error updating profile: ${error.response?.data?.message || error.message}`);
       setTimeout(() => setMessage(''), 5000);
     }
-  } catch (error) {
-    console.error('Error updating profile:', error);
-    
-    // Handle 401 Unauthorized specifically
-    if (error.response?.status === 401) {
-      setMessage('Session expired. Please log in again.');
-      setTimeout(() => {
-        localStorage.clear();
-        window.location.href = '/login';
-      }, 2000);
-      return;
-    }
-    
-    if (error.response?.status === 413) {
-      setMessage('Image file is too large. Please select a smaller image.');
-    } else {
-      setMessage('Error updating profile. Please try again.');
-    }
-    setTimeout(() => setMessage(''), 5000);
-  }
-};
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
     window.location.href = '/login';
   };
 
@@ -245,7 +315,14 @@ const handleSave = async () => {
   };
 
   if (!user) {
-    return <p>Loading account info...</p>;
+    return (
+      <div className="container mt-5 text-center">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+        <p className="mt-2">Loading account info...</p>
+      </div>
+    );
   }
 
   return (
@@ -257,67 +334,106 @@ const handleSave = async () => {
               <h2 className="mb-0">Account Settings</h2>
               {hasChanges && (
                 <button onClick={handleSave} className="btn btn-light btn-sm">
+                  <i className="fas fa-save me-1"></i>
                   Save Changes
                 </button>
               )}
             </div>
             <div className="card-body">
               {message && (
-                <div className={`alert ${message.includes('Error') || message.includes('too large') ? 'alert-danger' : message.includes('Uploading') || message.includes('Saving') ? 'alert-info' : 'alert-success'}`}>
+                <div className={`alert ${
+                  message.includes('Error') || message.includes('failed') || message.includes('too large') || message.includes('not supported') 
+                    ? 'alert-danger' 
+                    : message.includes('Uploading') || message.includes('Saving') 
+                    ? 'alert-info' 
+                    : 'alert-success'
+                } alert-dismissible fade show`}>
+                  <i className={`fas ${
+                    message.includes('Error') || message.includes('failed') 
+                      ? 'fa-exclamation-triangle' 
+                      : message.includes('success') 
+                      ? 'fa-check-circle' 
+                      : 'fa-info-circle'
+                  } me-2`}></i>
                   {message}
+                  <button 
+                    type="button" 
+                    className="btn-close" 
+                    onClick={() => setMessage('')}
+                  ></button>
                 </div>
               )}
 
               <div className="row">
                 <div className="col-md-4 text-center mb-4">
-                  <div 
-                    className="position-relative d-inline-block"
-                    onClick={() => !uploading && document.getElementById('profile-picture-input').click()}
-                    style={{ cursor: uploading ? 'not-allowed' : 'pointer' }}
-                  >
-                    <img
-                      src={formData.profilePicture}
-                      alt="Profile"
-                      className="rounded-circle mb-3"
-                      style={{ 
-                        width: '150px', 
-                        height: '150px', 
-                        objectFit: 'cover',
-                        border: '3px solid #dee2e6',
-                        opacity: uploading ? 0.6 : 1
-                      }}
-                    />
-                    <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center rounded-circle" 
-                         style={{ 
-                           backgroundColor: 'rgba(0,0,0,0.5)', 
-                           opacity: 0,
-                           transition: 'opacity 0.2s'
-                         }}
-                         onMouseEnter={(e) => !uploading && (e.target.style.opacity = 1)}
-                         onMouseLeave={(e) => e.target.style.opacity = 0}
+                  {/* ✅ IMPROVED: Better upload UI with file type info */}
+                  <div className="mb-3">
+                    <div 
+                      className="position-relative d-inline-block"
+                      onClick={() => !uploading && document.getElementById('profile-picture-input').click()}
+                      style={{ cursor: uploading ? 'not-allowed' : 'pointer' }}
                     >
-                      <i className="fas fa-camera text-white fs-4"></i>
-                    </div>
-                    {uploading && (
-                      <div className="position-absolute top-50 start-50 translate-middle">
-                        <div className="spinner-border text-primary" role="status">
-                          <span className="visually-hidden">Uploading...</span>
-                        </div>
+                      <img
+                        src={formData.profilePicture}
+                        alt="Profile"
+                        className="rounded-circle mb-3"
+                        style={{ 
+                          width: '150px', 
+                          height: '150px', 
+                          objectFit: 'cover',
+                          border: '3px solid #dee2e6',
+                          opacity: uploading ? 0.6 : 1
+                        }}
+                        onError={(e) => {
+                          e.target.src = '/images/members/default-avatar.jpg';
+                        }}
+                      />
+                      <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center rounded-circle" 
+                           style={{ 
+                             backgroundColor: 'rgba(0,0,0,0.5)', 
+                             opacity: 0,
+                             transition: 'opacity 0.2s'
+                           }}
+                           onMouseEnter={(e) => !uploading && (e.target.style.opacity = 1)}
+                           onMouseLeave={(e) => e.target.style.opacity = 0}
+                      >
+                        <i className="fas fa-camera text-white fs-4"></i>
                       </div>
-                    )}
+                      {uploading && (
+                        <div className="position-absolute top-50 start-50 translate-middle">
+                          <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Uploading...</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
+                  
                   <input
                     id="profile-picture-input"
                     type="file"
-                    accept="image/*"
+                    accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
                     onChange={handleProfilePictureChange}
                     className="d-none"
                     disabled={uploading}
                   />
-                  <small className="text-muted d-block mt-1">
-                    {uploading ? 'Uploading...' : 'Click image to change. Max 5MB.'}
-                  </small>
+                  
+                  <div className="text-muted small">
+                    {uploading ? (
+                      <div>
+                        <i className="fas fa-spinner fa-spin me-1"></i>
+                        Uploading...
+                      </div>
+                    ) : (
+                      <div>
+                        <div><strong>Click image to change</strong></div>
+                        <div>Max 10MB</div>
+                        <div>JPEG, PNG, WebP, GIF</div>
+                      </div>
+                    )}
+                  </div>
                 </div>
+                
                 <div className="col-md-8">
                   <div className="row">
                     <div className="col-md-6 mb-3">
@@ -355,6 +471,7 @@ const handleSave = async () => {
 
               <div className="d-flex justify-content-between mt-4">
                 <button onClick={handleLogout} className="btn btn-danger">
+                  <i className="fas fa-sign-out-alt me-2"></i>
                   Logout
                 </button>
                 <div className="d-flex gap-2">
@@ -364,6 +481,7 @@ const handleSave = async () => {
                   </Link>
                   {hasChanges && (
                     <button onClick={handleSave} className="btn btn-primary">
+                      <i className="fas fa-save me-2"></i>
                       Save Changes
                     </button>
                   )}
