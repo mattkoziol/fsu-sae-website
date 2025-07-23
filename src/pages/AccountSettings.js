@@ -52,9 +52,16 @@ function AccountSettings() {
     setEditingField(null);
   };
 
-  // ✅ IMPROVED: Better file validation and error handling
+  // ✅ UPDATED: Enhanced file validation with HEIC support
   const validateFile = (file) => {
-    // Check file size (10MB limit to match backend)
+    console.log('🔍 File validation:', {
+      name: file.name,
+      type: file.type,
+      size: `${(file.size / 1024 / 1024).toFixed(2)}MB`,
+      lastModified: new Date(file.lastModified).toISOString()
+    });
+
+    // Check file size (10MB limit to accommodate HEIC files)
     const maxSize = 10 * 1024 * 1024; // 10MB
     if (file.size > maxSize) {
       return {
@@ -63,20 +70,42 @@ function AccountSettings() {
       };
     }
 
-    // Check file type - match backend exactly
+    // Check for empty files
+    if (file.size === 0) {
+      return {
+        valid: false,
+        message: 'File appears to be empty or corrupted. Please try a different image.'
+      };
+    }
+
+    // ✅ UPDATED: Accept HEIC/HEIF files from iPhones
     const allowedTypes = [
       'image/jpeg',
       'image/jpg',
       'image/png',
       'image/webp',
-      'image/gif'
+      'image/gif',
+      'image/heic',
+      'image/heif'
     ];
 
-    if (!allowedTypes.includes(file.type.toLowerCase())) {
+    // Also check file extension as backup (some browsers don't detect HEIC MIME type correctly)
+    const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'heic', 'heif'];
+    const fileExtension = file.name.toLowerCase().split('.').pop();
+
+    const typeValid = allowedTypes.includes(file.type.toLowerCase());
+    const extensionValid = allowedExtensions.includes(fileExtension);
+
+    if (!typeValid && !extensionValid) {
       return {
         valid: false,
-        message: `File type "${file.type}" not supported. Please use JPEG, PNG, WebP, or GIF.`
+        message: `File type "${file.type}" not supported. Please use JPEG, PNG, WebP, GIF, or HEIC (iPhone photos).`
       };
+    }
+
+    // Special message for HEIC files
+    if (file.type.toLowerCase().includes('heic') || fileExtension === 'heic' || fileExtension === 'heif') {
+      console.log('📱 HEIC file detected - will be converted to JPEG on upload');
     }
 
     return { valid: true };
@@ -87,7 +116,6 @@ function AccountSettings() {
     if (!file) return;
 
     try {
-      // ✅ IMPROVED: Detailed file validation
       console.log('📁 Selected file:', {
         name: file.name,
         type: file.type,
@@ -98,13 +126,22 @@ function AccountSettings() {
       if (!validation.valid) {
         setMessage(validation.message);
         setTimeout(() => setMessage(''), 5000);
-        // Clear the file input
         e.target.value = '';
         return;
       }
 
       setUploading(true);
-      setMessage('Uploading image...');
+      
+      // Special message for HEIC files
+      const isHeic = file.type.toLowerCase().includes('heic') || 
+                     file.name.toLowerCase().endsWith('.heic') ||
+                     file.name.toLowerCase().endsWith('.heif');
+      
+      if (isHeic) {
+        setMessage('Processing iPhone photo...');
+      } else {
+        setMessage('Uploading image...');
+      }
 
       // Get authentication token
       const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -136,10 +173,14 @@ function AccountSettings() {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
         },
-        timeout: 30000, // 30 second timeout for large files
+        timeout: 45000, // 45 second timeout for HEIC conversion
         onUploadProgress: (progressEvent) => {
           const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-          setMessage(`Uploading... ${percentCompleted}%`);
+          if (isHeic && percentCompleted < 100) {
+            setMessage(`Processing iPhone photo... ${percentCompleted}%`);
+          } else {
+            setMessage(`Uploading... ${percentCompleted}%`);
+          }
         }
       });
 
@@ -152,7 +193,13 @@ function AccountSettings() {
           profilePicture: response.data.fileUrl
         }));
         setHasChanges(true);
-        setMessage('Image uploaded successfully!');
+        
+        // Success message with conversion info if applicable
+        if (isHeic) {
+          setMessage('iPhone photo processed and uploaded successfully!');
+        } else {
+          setMessage('Image uploaded successfully!');
+        }
         setTimeout(() => setMessage(''), 3000);
       } else {
         console.error('❌ Backend returned failure:', response.data);
@@ -161,19 +208,27 @@ function AccountSettings() {
       }
 
     } catch (error) {
-      console.error('❌ Upload error details:', {
+      console.error('❌ Upload error:', {
         message: error.message,
         status: error.response?.status,
-        statusText: error.response?.statusText,
         data: error.response?.data,
         code: error.code
       });
 
+      // Check if file is HEIC for error messages
+      const isHeicFile = file.type.toLowerCase().includes('heic') || 
+                         file.name.toLowerCase().endsWith('.heic') ||
+                         file.name.toLowerCase().endsWith('.heif');
+
       let errorMessage = 'Upload failed: ';
 
-      // ✅ IMPROVED: Specific error handling
+      // ✅ Enhanced error handling for HEIC and other issues
       if (error.code === 'ECONNABORTED') {
-        errorMessage += 'Upload timed out. File may be too large or connection is slow.';
+        if (isHeicFile) {
+          errorMessage += 'iPhone photo processing timed out. The file may be too large or corrupted.';
+        } else {
+          errorMessage += 'Upload timed out. File may be too large or connection is slow.';
+        }
       } else if (error.response?.status === 401) {
         errorMessage = 'Session expired. Please log in again.';
         setTimeout(() => {
@@ -183,7 +238,12 @@ function AccountSettings() {
       } else if (error.response?.status === 413) {
         errorMessage += 'File is too large for the server. Try a smaller image.';
       } else if (error.response?.status === 400) {
-        errorMessage += error.response.data?.message || 'Invalid file or request.';
+        const serverMessage = error.response.data?.message || 'Invalid file or request.';
+        if (serverMessage.includes('HEIC') || serverMessage.includes('iPhone')) {
+          errorMessage += serverMessage + ' Try converting to JPEG first.';
+        } else {
+          errorMessage += serverMessage;
+        }
       } else if (error.response?.status === 500) {
         errorMessage += 'Server error. Please try again later.';
       } else if (error.code === 'NETWORK_ERROR' || !error.response) {
@@ -197,12 +257,11 @@ function AccountSettings() {
 
     } finally {
       setUploading(false);
-      // Clear the file input so user can try the same file again if needed
       e.target.value = '';
     }
   };
 
-  // ✅ IMPROVED: Better save function with error handling
+  // Save function remains the same
   const handleSave = async () => {
     try {
       setMessage('Saving profile...');
@@ -240,7 +299,6 @@ function AccountSettings() {
       );
 
       if (response.data.success) {
-        // Update localStorage with new user data
         const updatedUser = { ...user, ...formData };
         localStorage.setItem('user', JSON.stringify(updatedUser));
         setUser(updatedUser);
@@ -342,16 +400,16 @@ function AccountSettings() {
             <div className="card-body">
               {message && (
                 <div className={`alert ${
-                  message.includes('Error') || message.includes('failed') || message.includes('too large') || message.includes('not supported') 
+                  message.includes('Error') || message.includes('failed') || message.includes('too large') || message.includes('not supported') || message.includes('timed out')
                     ? 'alert-danger' 
-                    : message.includes('Uploading') || message.includes('Saving') 
+                    : message.includes('Processing') || message.includes('Uploading') || message.includes('Saving') 
                     ? 'alert-info' 
                     : 'alert-success'
                 } alert-dismissible fade show`}>
                   <i className={`fas ${
-                    message.includes('Error') || message.includes('failed') 
+                    message.includes('Error') || message.includes('failed') || message.includes('timed out')
                       ? 'fa-exclamation-triangle' 
-                      : message.includes('success') 
+                      : message.includes('success') || message.includes('successfully')
                       ? 'fa-check-circle' 
                       : 'fa-info-circle'
                   } me-2`}></i>
@@ -366,7 +424,7 @@ function AccountSettings() {
 
               <div className="row">
                 <div className="col-md-4 text-center mb-4">
-                  {/* ✅ IMPROVED: Better upload UI with file type info */}
+                  {/* ✅ UPDATED: Enhanced upload UI with iPhone support info */}
                   <div className="mb-3">
                     <div 
                       className="position-relative d-inline-block"
@@ -409,10 +467,11 @@ function AccountSettings() {
                     </div>
                   </div>
                   
+                  {/* ✅ UPDATED: File input with HEIC support */}
                   <input
                     id="profile-picture-input"
                     type="file"
-                    accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+                    accept="image/jpeg,image/jpg,image/png,image/webp,image/gif,image/heic,image/heif,.heic,.heif"
                     onChange={handleProfilePictureChange}
                     className="d-none"
                     disabled={uploading}
@@ -422,13 +481,17 @@ function AccountSettings() {
                     {uploading ? (
                       <div>
                         <i className="fas fa-spinner fa-spin me-1"></i>
-                        Uploading...
+                        {message.includes('Processing') ? 'Processing...' : 'Uploading...'}
                       </div>
                     ) : (
                       <div>
                         <div><strong>Click image to change</strong></div>
                         <div>Max 10MB</div>
-                        <div>JPEG, PNG, WebP, GIF</div>
+                        <div>JPEG, PNG, WebP, GIF, HEIC</div>
+                        <div className="text-info">
+                          <i className="fas fa-mobile-alt me-1"></i>
+                          iPhone photos supported
+                        </div>
                       </div>
                     )}
                   </div>
