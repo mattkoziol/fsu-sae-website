@@ -253,7 +253,7 @@ const ActiveMembers = () => {
                       <div className="card-body text-center d-flex flex-column">
                         <div className="mb-3" style={{ height: '80px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                           <img
-                            src={member.profilePicture || '/images/members/default-avatar.jpg'}
+                            src={member.profilePicture || '/images/sae-logo.png'}
                             alt={member.name}
                             className="rounded-circle"
                             style={{ 
@@ -264,7 +264,7 @@ const ActiveMembers = () => {
                               minHeight: '80px'
                             }}
                             onError={(e) => {
-                              e.target.src = '/images/members/default-avatar.jpg';
+                              e.target.src = '/images/sae-logo.png';
                             }}
                           />
                         </div>

@@ -27,7 +27,7 @@ function AccountSettings() {
       setFormData({
         name: storedUser.name || '',
         email: storedUser.email || '',
-        profilePicture: storedUser.profilePicture || '/images/members/default-avatar.jpg',
+        profilePicture: storedUser.profilePicture || '/images/sae-logo.png',
         linkedin: storedUser.linkedin || '',
         major: storedUser.major || '',
         graduationYear: storedUser.graduationYear || ''
@@ -443,7 +443,7 @@ function AccountSettings() {
                           opacity: uploading ? 0.6 : 1
                         }}
                         onError={(e) => {
-                          e.target.src = '/images/members/default-avatar.jpg';
+                          e.target.src = '/images/sae-logo.png';
                         }}
                       />
                       <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center rounded-circle" 
