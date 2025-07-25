@@ -325,3 +325,15 @@ html {
   font-weight: 600;
   letter-spacing: 0.5px;
 }
+
+/* Custom Gold Button Styling */
+.btn-outline-gold {
+  background-color: #fff;
+  border: 2px solid #916f41 !important;
+  color: #916f41 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  transition: all 0.3s ease !important;
+}
+
+
