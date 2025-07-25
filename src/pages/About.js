@@ -165,47 +165,47 @@ const About = () => {
         </div>
       </section>
 
-            {/* ENHANCED: Styled Developer Credit Section */}
-      <section className="py-5 bg-gradient-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-8">
-              <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
-                <div className="card-body p-4 text-center bg-white">
-                  <div className="mb-3">
-                    <div className="icon-wrapper mx-auto mb-3" style={{ width: '60px', height: '60px' }}>
-                      <i className="fas fa-code fa-2x"></i>
-                    </div>
-                  </div>
-                  <h3 className="section-header mb-3">Website Development</h3>
-                  <p className="text-muted mb-3 lh-lg">
-                    This website was designed and developed by <strong className="text-gold">Matthew Koziol</strong>, 
-                    a brother of Sigma Alpha Epsilon and computer science student at FSU.
-                  </p>
-                  <div className="mt-4">
-                    <a 
-                      href="mailto:matthewkoizol04@gmail.com" 
-                      className="btn btn-royal-purple me-3 px-4 py-2 rounded-pill hover-lift"
-                    >
-                      <i className="fas fa-envelope me-2"></i>
-                      Contact Developer
-                    </a>
-                    <a 
-                      href="https://www.linkedin.com/in/matthew-koziol-/" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-outline-gold px-4 py-2 rounded-pill hover-lift"
-                    >
-                      <i className="fab fa-linkedin me-2"></i>
-                      LinkedIn
-                    </a>
-                  </div>
-                </div>
+{/* ENHANCED: Styled Developer Credit Section */}
+<section className="py-5 bg-gradient-light">
+  <div className="container">
+    <div className="row justify-content-center">
+      <div className="col-md-8">
+        <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
+          <div className="card-body p-4 text-center bg-white">
+            <div className="mb-3">
+              <div className="icon-wrapper mx-auto mb-3" style={{ width: '60px', height: '60px' }}>
+                <i className="fas fa-code fa-2x"></i>
               </div>
+            </div>
+            <h3 className="section-header mb-3">Website Development</h3>
+            <p className="text-muted mb-3 lh-lg">
+              This website was designed and developed by <strong className="text-gold">Matthew Koziol</strong>, 
+              a brother of Sigma Alpha Epsilon and computer science student at FSU.
+            </p>
+            <div className="mt-4">
+              <a 
+                href="mailto:matthewkoizol04@gmail.com" 
+                className="btn btn-royal-purple me-3 px-4 py-2 rounded-pill hover-lift"
+              >
+                <i className="fas fa-envelope me-2"></i>
+                Contact Developer
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/matthew-koziol-/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-gold px-4 py-2 rounded-pill hover-lift"
+              >
+                <i className="fab fa-linkedin me-2"></i>
+                LinkedIn
+              </a>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       
 

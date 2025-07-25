@@ -1,3 +1,4 @@
+
 /* Enhanced About Page Styles */
 
 /* Prevent horizontal scrolling */
@@ -309,12 +310,6 @@ footer .social-links a:hover {
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-  overscroll-behavior: none;
-}
-
 /* Custom spacing utilities */
 .lh-lg {
   line-height: 1.8 !important;
@@ -344,21 +339,30 @@ html {
   transform: translateY(-2px);
 }
 
-/* Mobile Button Fixes */
+/* Mobile Button Fixes - Enhanced spacing */
 @media (max-width: 575.98px) {
-  /* Add margin between stacked buttons */
-  .row.g-3 > .col-12:not(:last-child) {
-    margin-bottom: 0.75rem;
+  /* Stack buttons vertically on mobile with proper spacing */
+  .btn.me-3 {
+    margin-right: 0 !important;
+    margin-bottom: 1rem !important;
+    display: block;
+    width: 100%;
+  }
+  
+  .btn + .btn {
+    margin-left: 0 !important;
+    display: block;
+    width: 100%;
   }
   
   /* Ensure buttons don't overlap */
-  .btn.w-100 {
-    display: block;
+  .btn {
     min-height: 44px; /* iOS minimum touch target */
+    font-size: 16px !important; /* Prevent zoom on iOS */
   }
 }
 
-/* Fix auto-scroll issues */
+/* Fix auto-scroll issues - Remove problematic scroll behavior */
 .btn {
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
@@ -367,14 +371,6 @@ html {
 
 body {
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior: none;
-}
-
-/* Prevent zoom on button tap (iOS) */
-@media (max-width: 575.98px) {
-  .btn {
-    font-size: 16px !important;
-  }
 }
 
 /* Fix button hover states on touch devices */
