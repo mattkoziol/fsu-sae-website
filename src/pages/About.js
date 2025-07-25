@@ -7,7 +7,7 @@ import Typewriter from '../components/Typewriter';
 
 const About = () => {
   return (
-    <div className="bg-gradient-light min-vh-100">
+    <div>
       {/* Simple Page Header - Left Aligned */}
       <div className="container py-5">
         <div className="text-start">
@@ -23,7 +23,7 @@ const About = () => {
           <div className="row align-items-center g-5">
             <div className="col-lg-6 mb-4 mb-lg-0">
               <div className="image-container">
-                <img src="/images/housephoto1.jpg" alt="SAE Chapter House" className="img-fluid rounded-4 shadow-lg hover-zoom" />
+                <img src="/images/SAEHOUSEPHOTO.jpg" alt="SAE Chapter House" className="img-fluid rounded-4 shadow-lg hover-zoom" />
                 <div className="overlay-badge">
                   <span className="badge bg-royal-purple fs-6 p-3">Est. 1949</span>
                 </div>
@@ -46,8 +46,8 @@ const About = () => {
                       <span className="fs-5">Current House Claimed in 2017</span>
                     </div>
                     <div className="milestone-item">
-                      <i className="fas fa-users text-gold me-3 fa-lg"></i>
-                      <span className="fs-5">Largest Fraternity on Campus</span>
+                      <i className="fas fa-trophy text-gold me-3 fa-lg"></i>
+                      <span className="fs-5">Multiple Greek Week Championships</span>
                     </div>
                   </div>
                 </div>
@@ -165,49 +165,47 @@ const About = () => {
         </div>
       </section>
 
-{/* ENHANCED: Styled Developer Credit Section */}
-<section className="py-5 bg-gradient-light">
-  <div className="container">
-    <div className="row justify-content-center">
-      <div className="col-md-8">
-        <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
-          <div className="card-body p-4 text-center bg-white">
-            <div className="mb-3">
-              <div className="icon-wrapper mx-auto mb-3" style={{ width: '60px', height: '60px' }}>
-                <i className="fas fa-code fa-2x"></i>
+      {/* Developer Credit Section */}
+      <section className="py-5 bg-gradient-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-md-8">
+              <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div className="card-body p-4 text-center bg-white">
+                  <div className="mb-3">
+                    <div className="icon-wrapper mx-auto mb-3">
+                      <i className="fas fa-code fa-2x"></i>
+                    </div>
+                  </div>
+                  <h3 className="section-header mb-3">Website Development</h3>
+                  <p className="text-muted mb-3 lh-lg">
+                    This website was designed and developed by <strong className="text-gold">Matthew Koziol</strong>, 
+                    a brother of Sigma Alpha Epsilon and computer science student at FSU.
+                  </p>
+                  <div className="mt-4">
+                    <a 
+                      href="mailto:matthewkoizol04@gmail.com" 
+                      className="btn btn-royal-purple me-3 px-4 py-2 rounded-pill hover-lift"
+                    >
+                      <i className="fas fa-envelope me-2"></i>
+                      Contact Developer
+                    </a>
+                    <a 
+                      href="https://www.linkedin.com/in/matthew-koziol-/" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline-gold px-4 py-2 rounded-pill hover-lift"
+                    >
+                      <i className="fab fa-linkedin me-2"></i>
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-            <h3 className="section-header mb-3">Website Development</h3>
-            <p className="text-muted mb-3 lh-lg">
-              This website was designed and developed by <strong className="text-gold">Matthew Koziol</strong>, 
-              a brother of Sigma Alpha Epsilon and computer science student at FSU.
-            </p>
-            <div className="mt-4">
-              <a 
-                href="mailto:matthewkoizol04@gmail.com" 
-                className="btn btn-royal-purple me-3 px-4 py-2 rounded-pill hover-lift"
-              >
-                <i className="fas fa-envelope me-2"></i>
-                Contact Developer
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/matthew-koziol-/" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline-gold px-4 py-2 rounded-pill hover-lift"
-              >
-                <i className="fab fa-linkedin me-2"></i>
-                LinkedIn
-              </a>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-      
+      </section>
 
       {/* Enhanced Footer */}
       <footer className="bg-royal-purple text-white py-5">
@@ -220,9 +218,9 @@ const About = () => {
             </div>
             <div className="col-md-4 text-md-end">
               <div className="social-links mb-3">
-                <a href="https://www.instagram.com/fsusae/?hl=en" className="text-gold me-3 fs-4" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/SAEFloridaState/" className="text-gold me-3 fs-4" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a>
-                <a href="https://www.linkedin.com/company/sigma-alpha-epsilon-florida-beta-chapter/posts/?feedView=all" className="text-gold fs-4" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
+                <a href="#" className="text-gold me-3 fs-4"><i className="fab fa-instagram"></i></a>
+                <a href="#" className="text-gold me-3 fs-4"><i className="fab fa-facebook"></i></a>
+                <a href="#" className="text-gold fs-4"><i className="fab fa-twitter"></i></a>
               </div>
             </div>
           </div>
