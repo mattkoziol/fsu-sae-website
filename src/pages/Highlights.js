@@ -64,17 +64,17 @@ const Highlights = () => {
     {
       id: 4,
       title: "UF GAME DAY",
-      image: "/images/galleries/UFGAMEDAY/photo3.jpg",
+      image: "/images/galleries/UFGAMEDAY/Photo3.jpg",
       video: null,
       description: "Rivalry Game Tailgate.",
       date: "November 2024",
       gallery: [
-        "/images/galleries/UFGAMEDAY/photo1.jpg",
-        "/images/galleries/UFGAMEDAY/photo2.jpg",
-        "/images/galleries/UFGAMEDAY/photo3.jpg",
-        "/images/galleries/UFGAMEDAY/photo4.jpg",
-        "/images/galleries/UFGAMEDAY/photo5.jpg",
-        "/images/galleries/UFGAMEDAY/photo6.jpg"
+        "/images/galleries/UFGAMEDAY/Photo1.jpg",
+        "/images/galleries/UFGAMEDAY/Photo2.jpg",
+        "/images/galleries/UFGAMEDAY/Photo3.jpg",
+        "/images/galleries/UFGAMEDAY/Photo4.jpg",
+        "/images/galleries/UFGAMEDAY/Photo5.jpg",
+        "/images/galleries/UFGAMEDAY/Photo6.jpg"
       ]
     }
   ];
