@@ -47,19 +47,38 @@ const ActiveMembers = () => {
     loadMembers();
   }, []);
 
-  // Data fetching effect (runs once)
-/*useEffect(() => {
-  fetchMembers();
-}, [fetchMembers]);*/
-
-  const filteredMembers = members.filter(member => {
-    const matchesSearch = member.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-                         member.major.toLowerCase().includes(searchValue.toLowerCase()) ||
-                         member.role.toLowerCase().includes(searchValue.toLowerCase());
-    const matchesClass = classFilter === 'all' || member.graduationYear === classFilter;
-    const isActiveMember = member.role !== 'alumni'; // Only show active members, not alumni
-    return matchesSearch && matchesClass && isActiveMember;
-  });
+  // ✅ UPDATED: Filter and sort members - prioritize those with uploaded profile pictures
+  const filteredMembers = members
+    .filter(member => {
+      const matchesSearch = member.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+                           member.major.toLowerCase().includes(searchValue.toLowerCase()) ||
+                           member.role.toLowerCase().includes(searchValue.toLowerCase());
+      const matchesClass = classFilter === 'all' || member.graduationYear === classFilter;
+      const isActiveMember = member.role !== 'alumni'; // Only show active members, not alumni
+      return matchesSearch && matchesClass && isActiveMember;
+    })
+    // ✅ NEW: Sort by profile picture status, then by name
+    .sort((a, b) => {
+      // Check if members have uploaded profile pictures (not default logo)
+      const aHasCustomPic = a.profilePicture && 
+                           !a.profilePicture.includes('sae-logo.png') && 
+                           !a.profilePicture.includes('default-avatar.jpg') &&
+                           a.profilePicture !== '/images/sae-logo.png' &&
+                           a.profilePicture !== '/images/members/default-avatar.jpg';
+      
+      const bHasCustomPic = b.profilePicture && 
+                           !b.profilePicture.includes('sae-logo.png') && 
+                           !b.profilePicture.includes('default-avatar.jpg') &&
+                           b.profilePicture !== '/images/sae-logo.png' &&
+                           b.profilePicture !== '/images/members/default-avatar.jpg';
+      
+      // Sort: Custom pics first, then default pics
+      if (aHasCustomPic && !bHasCustomPic) return -1;
+      if (!aHasCustomPic && bHasCustomPic) return 1;
+      
+      // If both have same pic status, sort alphabetically by name
+      return a.name.localeCompare(b.name);
+    });
 
   // Pagination logic
   const indexOfLastCard = currentPage * cardsPerPage;
