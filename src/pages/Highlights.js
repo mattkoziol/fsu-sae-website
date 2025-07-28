@@ -21,7 +21,11 @@ const Highlights = () => {
         "/images/galleries/Paddy-Murphy-Gallery/Photo1.jpg",
         "/images/galleries/Paddy-Murphy-Gallery/Photo2.jpg",
         "/images/galleries/Paddy-Murphy-Gallery/Photo3.jpg",
-        "/images/galleries/Paddy-Murphy-Gallery/Photo4.jpg"
+        "/images/galleries/Paddy-Murphy-Gallery/Photo4.jpg",
+        "/images/galleries/Paddy-Murphy-Gallery/Photo5.jpg",
+        "/images/galleries/Paddy-Murphy-Gallery/Photo6.jpg",
+        "/images/galleries/Paddy-Murphy-Gallery/Photo7.jpg",
+        "/images/galleries/Paddy-Murphy-Gallery/Photo8.jpg"
       ]
     },
     {
@@ -30,7 +34,13 @@ const Highlights = () => {
       image: "/images/galleries/saebiza/Photo1.jpg",
       video: null,
       description: "Our annual spring party, SAEBIZA, brought the chapter together for a night of great music, good vibes, and lasting memories with friends.",
-      date: "February 2025"
+      date: "February 2025",
+      gallery: [
+        "/images/galleries/saebiza/Photo1.jpg",
+        "/images/galleries/saebiza/Photo2.jpg",
+        "/images/galleries/saebiza/Photo3.jpg",
+        "/images/galleries/saebiza/Photo4.jpg"
+      ]
     },
     {
       id: 3, 
@@ -53,11 +63,19 @@ const Highlights = () => {
     },
     {
       id: 4,
-      title: "Rush Week Events",
-      image: "/images/RushWeekCover.jpg",
+      title: "UF GAME DAY",
+      image: "/images/galleries/UFGAMEDAY/photo3.jpg",
       video: null,
-      description: "Welcoming new brothers into our SAE family.",
-      date: "January 2025"
+      description: "Rivalry Game Tailgate.",
+      date: "November 2024",
+      gallery: [
+        "/images/galleries/UFGAMEDAY/photo1.jpg",
+        "/images/galleries/UFGAMEDAY/photo2.jpg",
+        "/images/galleries/UFGAMEDAY/photo3.jpg",
+        "/images/galleries/UFGAMEDAY/photo4.jpg",
+        "/images/galleries/UFGAMEDAY/photo5.jpg",
+        "/images/galleries/UFGAMEDAY/photo6.jpg"
+      ]
     }
   ];
 
