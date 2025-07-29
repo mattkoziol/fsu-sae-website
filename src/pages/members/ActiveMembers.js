@@ -184,7 +184,7 @@ const ActiveMembers = () => {
                       </a>
                     </li>
                     <li className="list-group-item">
-                      <a href="#">
+                      <a href="https://www.saefsu.com/housing" target="_blank" rel= "noopener noreferrer">
                         <i className="fas fa-home me-2 text-gold"></i>Housing Information
                       </a>
                     </li>
