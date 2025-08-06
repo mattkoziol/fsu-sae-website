@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -111,6 +110,25 @@ function AlumniRsvpSection({ eventKey, user }) {
 const Alumni = () => {
   // Get user from localStorage (or your auth context)
   const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+  // Notable alumni data - you can later move this to a backend API
+  const notableAlumni = [
+    {
+      id: 1,
+      name: "Dr. Mike Brady",
+      graduationYear: "FSU Alumnus",
+      title: "Assistant Provost & Marketing Professor, FSU",
+      achievements: [
+        "Dr. Persis E. Rockwood Professor of Marketing",
+        "Assistant Provost for Florida State University",
+        "Former Board Chair of American Marketing Association",
+        "Recognized by AMA CEO for outstanding leadership"
+      ],
+      image: "/images/mikebrady.jpg", // You'll need to add these images
+      linkedin: "https://www.linkedin.com/in/mike-brady-9598067b/"
+    }
+    
+  ];
 
   return (
     <div className="bg-gradient-light min-vh-100">
@@ -229,6 +247,7 @@ const Alumni = () => {
                   </li>
                 </ul>
               </div>
+              
               {/* Alumni Hiring Section */}
               <div className="bg-gradient-light rounded p-4 mb-4 mt-4">
                 <h4 className="text-royal-purple mb-3">
@@ -250,6 +269,93 @@ const Alumni = () => {
                   <i className="fas fa-heart me-2"></i>Make a Donation
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Notable Alumni Section */}
+      <section className="notable-alumni py-5 bg-gradient-light">
+        <div className="container">
+          <h2 className="section-header text-center mb-5 animate-fade-in">Notable Alumni</h2>
+          <p className="text-center mb-5 lead animate-fade-in">
+            Celebrating the outstanding achievements of our alumni brothers who continue to exemplify the values of Sigma Alpha Epsilon
+          </p>
+          <div className="row g-4 animate-fade-in-delay justify-content-center">
+            {notableAlumni.map((alumnus, index) => (
+              <div key={alumnus.id} className="col-lg-4 col-md-6">
+                <div className="card notable-alumni-card h-100 hover-lift">
+                  <div className="card-img-container">
+                    <img 
+                      src={alumnus.image} 
+                      alt={alumnus.name}
+                      className="card-img-top notable-alumni-img"
+                      onError={(e) => {
+                        // Fallback to placeholder if image doesn't exist
+                        e.target.src = "/images/placeholder-avatar.jpg";
+                      }}
+                    />
+                    <div className="card-img-overlay-gradient"></div>
+                  </div>
+                  <div className="card-body d-flex flex-column">
+                    <div className="text-center mb-3">
+                      <h4 className="card-title text-royal-purple mb-1">{alumnus.name}</h4>
+                      <p className="text-gold fw-semibold mb-1">{alumnus.graduationYear}</p>
+                      <p className="text-muted">{alumnus.title}</p>
+                    </div>
+                    
+                    <div className="achievements-section flex-grow-1">
+                      <h5 className="achievements-title mb-3">
+                        <i className="fas fa-trophy me-2 text-gold"></i>
+                        Key Achievements
+                      </h5>
+                      <ul className="achievements-list">
+                        {alumnus.achievements.map((achievement, i) => (
+                          <li key={i} className="achievement-item">
+                            <i className="fas fa-chevron-right me-2 text-royal-purple"></i>
+                            {achievement}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="card-footer-actions mt-4 text-center">
+                      {alumnus.linkedin && (
+                        <a 
+                          href={alumnus.linkedin} 
+                          className="btn btn-outline-primary btn-sm hover-lift"
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          <i className="fab fa-linkedin me-2"></i>
+                          Connect on LinkedIn
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-5 animate-fade-in-delay">
+            <div className="bg-white rounded p-4 shadow-sm">
+              <h4 className="text-royal-purple mb-3">
+                <i className="fas fa-star me-2 text-gold"></i>
+                Know of a Notable Alumnus?
+              </h4>
+              <p className="text-muted mb-3">
+                Help us recognize outstanding alumni achievements by nominating brothers who have made significant impacts in their fields or communities.
+              </p>
+              <a 
+                href="mailto:flbetasae@gmail.com?subject=Notable%20Alumni%20Nomination" 
+                className="btn btn-royal-purple hover-lift"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fas fa-envelope me-2"></i>
+                Submit a Nomination
+              </a>
             </div>
           </div>
         </div>

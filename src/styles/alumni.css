@@ -188,6 +188,131 @@ h1 {
   letter-spacing: 0.5px;
 }
 
+/* Notable Alumni Section Styles */
+.notable-alumni {
+  border-top: 3px solid #916f41;
+}
+
+.notable-alumni-card {
+  max-width: 100%;
+  transition: all 0.4s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.notable-alumni-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-container {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.notable-alumni-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: all 0.4s ease;
+  border-radius: 8px;
+}
+
+.notable-alumni-card:hover .notable-alumni-img {
+  transform: scale(1.05);
+}
+
+.card-img-overlay-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(75, 48, 106, 0.1) 100%);
+  pointer-events: none;
+}
+
+.achievements-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.achievements-title {
+  color: #4B306A;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #916f41;
+  padding-bottom: 0.5rem;
+}
+
+.achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievement-item {
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #495057;
+  border-bottom: 1px solid rgba(145, 111, 65, 0.2);
+  transition: all 0.3s ease;
+}
+
+.achievement-item:last-child {
+  border-bottom: none;
+}
+
+.achievement-item:hover {
+  color: #4B306A;
+  transform: translateX(5px);
+  font-weight: 600;
+}
+
+.card-footer-actions {
+  border-top: 1px solid rgba(145, 111, 65, 0.2);
+  padding-top: 1rem;
+}
+
+.card-footer-actions .btn {
+  font-size: 0.9rem;
+  padding: 0.5rem 1.25rem;
+}
+
+/* Notable Alumni Card Responsive Design */
+@media (max-width: 768px) {
+  .notable-alumni-card {
+    margin-bottom: 2rem;
+  }
+  
+  .card-img-container {
+    height: 200px;
+  }
+  
+  .achievements-section {
+    padding: 1rem;
+    margin: 0.75rem 0;
+  }
+  
+  .achievements-title {
+    font-size: 1rem;
+  }
+  
+  .achievement-item {
+    font-size: 0.9rem;
+  }
+}
+
 /* Icons */
 .icon-royal-purple {
   color: #4B306A !important;
