@@ -126,7 +126,38 @@ const Alumni = () => {
       ],
       image: "/images/mikebrady.jpg", // You'll need to add these images
       linkedin: "https://www.linkedin.com/in/mike-brady-9598067b/"
+    },
+    {
+      id: 1,
+      name: "John Rivers",
+      graduationYear: "FSU Alumnus",
+      title: "CEO, 4R Restaurant Group & 4Roots Farm",
+      achievements: [
+        "Founded 4Rivers BBQ, named 'Best Casual Restaurant' in Florida",
+        "Expanded to 15+ locations across Florida",
+        "Co-founded 4Roots Farm promoting food equity and sustainability",
+        "Transitioned from 20-year healthcare career to barbecue mastery",
+        "Advocates for local farming and community nutrition programs"
+      ],
+      image: "/images/johnrivers.jpg", // You'll need to add these images
+      linkedin: "https://www.linkedin.com/in/john-rivers-33260216a/"
+    },
+    {
+      id: 1,
+      name: "Mack Brown",
+      graduationYear: "FSU Alumnus",
+      title: "College Football Hall of Fame Coach (Texas, UNC)",
+      achievements: [
+        "2005 NCAA National Championship & Coach of the Year",
+        "244 career wins, first coach to win 100+ games at two programs",
+        "Paul 'Bear' Bryant Coach of the Year Award (2006)",
+        "20 consecutive winning seasons and 18 consecutive bowl appearances",
+        "Community advocate for child abuse awareness and CASA volunteers"
+      ],
+      image: "/images/mackbrown.jpg" // You'll need to add these images
+      
     }
+
     
   ];
 
