@@ -277,6 +277,9 @@ const Alumni = () => {
                     Leadership Development Program
                   </li>
                 </ul>
+                <a href="https://sae.crowdchange.co/50202" className="btn btn-royal-purple btn-lg hover-lift" target="_blank" rel="noopener noreferrer">
+                  <i className="fas fa-chart-line me-2"></i>Make a Donation
+                </a>
               </div>
               
               {/* Alumni Hiring Section */}
@@ -292,12 +295,6 @@ const Alumni = () => {
                 >
                   <i className="fas fa-users me-2"></i>
                   View Our Active Member Directory
-                </a>
-              </div>
-              
-              <div className="d-flex flex-wrap gap-3">
-                <a href="https://sae.crowdchange.co/50202" className="btn btn-royal-purple btn-lg hover-lift" target="_blank" rel="noopener noreferrer">
-                  <i className="fas fa-heart me-2"></i>Make a Donation
                 </a>
               </div>
             </div>
