@@ -13,7 +13,131 @@ const ActiveMembers = () => {
   const [user, setUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(12); // Default to 12
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [hoveredEvent, setHoveredEvent] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
+
+  // Sample events data - you can replace this with data from your backend
+  const events = [
+    {
+      id: 1,
+      title: "Formal Chapter Meeting",
+      date: "2025-09-24",
+      time: "8:00 PM",
+      location: "Dunlap 2201",
+      description: "Formal chapter with Dr. Mack."
+    },
+    {
+      id: 2,
+      title: "Date Function",
+      date: "2025-10-01",
+      time: "8:00 PM",
+      location: "House",
+      description: "TORO theme date function at Derd"
+    },
+    {
+      id: 3,
+      title: "Tailgate",
+      date: "2025-10-04",
+      time: "4:00 PM",
+      location: "HOUSE",
+      description: "MIAMI VS FSU TAILGATE"
+    },
+    {
+      id: 4,
+      title: "Champs Chance",
+      date: "2025-10-07",
+      time: "7:00 PM",
+      location: "HOUSE",
+      description: "Fundraiser - Dog shelter foster event"
+    },
+    {
+      id: 5,
+      title: "Tailgate",
+      date: "2025-10-11",
+      time: "TBD",
+      location: "HOUSE",
+      description: "FSU VS PITT TAILGATE"
+    },
+    {
+      id: 6,
+      title: "SAEFARI",
+      date: "2025-10-24",
+      time: "10:00 PM",
+      location: "HOUSE",
+      description: "SAEBIZA"
+    },
+    {
+      id: 7,
+      title: "Tailgate",
+      date: "2025-11-01",
+      time: "TBD",
+      location: "HOUSE",
+      description: "FSU VS WAKE FOREST TAILGATE"
+    },
+    {
+      id: 8,
+      title: "Date Function",
+      date: "2025-10-15",
+      time: "8:00 PM",
+      location: "HOUSE",
+      description: "Kentucky Derby theme DF at Bowdens"
+    },
+    {
+      id: 9,
+      title: "Tailgate",
+      date: "2025-11-15",
+      time: "TBD",
+      location: "HOUSE",
+      description: "FSU VS Virginia Tech TAILGATE"
+    },
+    {
+      id: 10,
+      title: "FORMAL",
+      date: "2025-11-21",
+      time: "ALL DAY",
+      location: "NOLA",
+      description: "NOLA FORMAL"
+    },
+    {
+      id: 11,
+      title: "FORMAL",
+      date: "2025-11-22",
+      time: "ALL DAY",
+      location: "NOLA",
+      description: "NOLA FORMAL"
+    },
+    {
+      id: 12,
+      title: "FORMAL",
+      date: "2025-11-23",
+      time: "ALL DAY",
+      location: "NOLA",
+      description: "NOLA FORMAL"
+    }
+  ];
+
+  // Calendar helper functions
+  const getCalendarDays = () => {
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const startDate = new Date(firstDay);
+    startDate.setDate(startDate.getDate() - firstDay.getDay());
+    
+    const days = [];
+    const currentDate = new Date(startDate);
+    
+    for (let i = 0; i < 42; i++) {
+      days.push(new Date(currentDate));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    
+    return days;
+  };
 
   // Dynamically set cardsPerPage based on screen size
   useEffect(() => {
@@ -140,6 +264,128 @@ const ActiveMembers = () => {
 
   return (
     <div className="bg-gradient-light min-vh-100">
+      <style jsx>{`
+        .calendar-container {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .calendar {
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          overflow: hidden;
+        }
+        
+        .calendar-header {
+          background: #6f42c1;
+          color: white;
+          padding: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        
+        .calendar-weekdays {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          background: #f8f9fa;
+          border-bottom: 1px solid #dee2e6;
+        }
+        
+        .calendar-weekday {
+          padding: 10px 5px;
+          text-align: center;
+          font-weight: 600;
+          font-size: 0.9rem;
+          color: #6c757d;
+        }
+        
+        .calendar-days {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+        }
+        
+        .calendar-day {
+          padding: 12px 8px;
+          text-align: center;
+          cursor: pointer;
+          border-right: 1px solid #dee2e6;
+          border-bottom: 1px solid #dee2e6;
+          position: relative;
+          transition: all 0.2s ease;
+          min-height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+        }
+        
+        .calendar-day:hover {
+          background-color: #e9ecef;
+        }
+        
+        .calendar-day.other-month {
+          color: #adb5bd;
+          background-color: #f8f9fa;
+        }
+        
+        .calendar-day.today {
+          background-color: #007bff;
+          color: white;
+          font-weight: bold;
+        }
+        
+        .calendar-day.has-event {
+          background-color: #28a745;
+          color: white;
+          font-weight: bold;
+        }
+        
+        .calendar-day.has-event:hover {
+          background-color: #218838;
+        }
+        
+        .event-indicator {
+          width: 6px;
+          height: 6px;
+          background-color: #ffc107;
+          border-radius: 50%;
+          position: absolute;
+          top: 4px;
+          right: 4px;
+        }
+        
+        .event-tooltip {
+          position: fixed;
+          background: white;
+          border: 2px solid #6f42c1;
+          border-radius: 12px;
+          padding: 20px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+          z-index: 9999;
+          max-width: 350px;
+          min-width: 280px;
+          pointer-events: none;
+          font-size: 14px;
+          line-height: 1.5;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+        
+        .event-tooltip::before {
+          content: '';
+          position: absolute;
+          top: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 0;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 8px solid white;
+        }
+      `}</style>
       {/* Enhanced Page Header */}
       <div className="container pt-5 pb-4">
         <div className="animate-fade-in">
@@ -175,25 +421,113 @@ const ActiveMembers = () => {
               <div className="card hover-lift">
                 <div className="card-body">
                   <h3 className="card-title text-royal-purple mb-4">
-                    <i className="fas fa-link me-2"></i>Quick Links
+                    <i className="fas fa-calendar me-2"></i>Events Calendar
                   </h3>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                      <a href="https://portal.sae.net/" target="_blank" rel="noopener noreferrer">
-                        <i className="fas fa-credit-card me-2 text-gold"></i>Greek Bill Payments
-                      </a>
-                    </li>
-                    <li className="list-group-item">
-                      <a href="https://www.saefsu.com/housing" target="_blank" rel= "noopener noreferrer">
-                        <i className="fas fa-home me-2 text-gold"></i>Housing Information
-                      </a>
-                    </li>
-                    <li className="list-group-item">
-                      <a href="#">
-                        <i className="fas fa-calendar me-2 text-gold"></i>Chapter Calendar
-                      </a>
-                    </li>
-                  </ul>
+                  <div className="calendar-container" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                    <div className="calendar">
+                      <div className="calendar-header">
+                        <button 
+                          className="btn btn-sm btn-outline-primary me-2"
+                          onClick={() => setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1))}
+                        >
+                          <i className="fas fa-chevron-left"></i>
+                        </button>
+                        <h5 className="mb-0 text-center flex-grow-1">
+                          {currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                        </h5>
+                        <button 
+                          className="btn btn-sm btn-outline-primary ms-2"
+                          onClick={() => setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1))}
+                        >
+                          <i className="fas fa-chevron-right"></i>
+                        </button>
+                      </div>
+                      <div className="calendar-grid">
+                        <div className="calendar-weekdays">
+                          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+                            <div key={day} className="calendar-weekday">{day}</div>
+                          ))}
+                        </div>
+                        <div className="calendar-days">
+                          {getCalendarDays().map((day, index) => {
+                            const hasEvent = events.some(event => {
+                              // Create date in local timezone to avoid timezone issues
+                              const eventDate = new Date(event.date + 'T00:00:00');
+                              return eventDate.toDateString() === day.toDateString();
+                            });
+                            const isToday = day.toDateString() === new Date().toDateString();
+                            const isCurrentMonth = day.getMonth() === currentMonth.getMonth();
+                            
+                            return (
+                              <div 
+                                key={index}
+                                className={`calendar-day ${!isCurrentMonth ? 'other-month' : ''} ${isToday ? 'today' : ''} ${hasEvent ? 'has-event' : ''}`}
+                                onClick={() => hasEvent && setSelectedEvent(events.find(event => {
+                                  const eventDate = new Date(event.date + 'T00:00:00');
+                                  return eventDate.toDateString() === day.toDateString();
+                                }))}
+                                onMouseEnter={(e) => {
+                                  if (hasEvent) {
+                                    setMousePosition({ x: e.clientX, y: e.clientY });
+                                    setHoveredEvent(events.find(event => {
+                                      const eventDate = new Date(event.date + 'T00:00:00');
+                                      return eventDate.toDateString() === day.toDateString();
+                                    }));
+                                  }
+                                }}
+                                onMouseLeave={() => setHoveredEvent(null)}
+                              >
+                                {day.getDate()}
+                                {hasEvent && <div className="event-indicator"></div>}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Event Details Tooltip */}
+                    {hoveredEvent && (
+                      <div className="event-tooltip">
+                        <div className="mb-3">
+                          <h5 className="text-royal-purple mb-0 fw-bold">
+                            <i className="fas fa-calendar-alt me-2"></i>
+                            {hoveredEvent.title}
+                          </h5>
+                        </div>
+                        
+                        <div className="mb-2">
+                          <i className="fas fa-calendar-day text-gold me-2"></i>
+                          <span className="fw-semibold">
+                            {new Date(hoveredEvent.date + 'T00:00:00').toLocaleDateString('en-US', { 
+                              weekday: 'long', 
+                              month: 'long', 
+                              day: 'numeric',
+                              year: 'numeric'
+                            })}
+                          </span>
+                        </div>
+                        
+                        {hoveredEvent.time && hoveredEvent.time !== 'TBD' && (
+                          <div className="mb-2">
+                            <i className="fas fa-clock text-gold me-2"></i>
+                            <span className="fw-semibold">{hoveredEvent.time}</span>
+                          </div>
+                        )}
+                        
+                        <div className="mb-3">
+                          <i className="fas fa-map-marker-alt text-gold me-2"></i>
+                          <span className="fw-semibold">{hoveredEvent.location}</span>
+                        </div>
+                        
+                        <div className="border-top pt-2">
+                          <p className="text-muted mb-0 fw-medium">
+                            {hoveredEvent.description}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

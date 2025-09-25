@@ -48,10 +48,10 @@ function AlumniRsvpSection({ eventKey, user }) {
   };
 
   return (
-    <section className="alumni-rsvp py-5 bg-white">
+    <section id="alumni-rsvp" className="alumni-rsvp py-5 bg-white">
       <div className="container">
         <div className="animate-fade-in">
-          <h2 className="section-header text-center mb-4">Miami vs FSU Tailgate RSVP</h2>
+          <h2 className="section-header text-center mb-4">Miami vs FSU Official Alumni Tailgate RSVP</h2>
           <div className="text-center mb-4">
             {user && user.role === 'alumni' ? (
               hasRsvped ? (
@@ -128,7 +128,7 @@ const Alumni = () => {
       linkedin: "https://www.linkedin.com/in/mike-brady-9598067b/"
     },
     {
-      id: 1,
+      id: 2,
       name: "John Rivers",
       graduationYear: "FSU Alumnus",
       title: "CEO, 4R Restaurant Group & 4Roots Farm",
@@ -143,7 +143,7 @@ const Alumni = () => {
       linkedin: "https://www.linkedin.com/in/john-rivers-33260216a/"
     },
     {
-      id: 1,
+      id: 3,
       name: "Mack Brown",
       graduationYear: "FSU Alumnus",
       title: "College Football Hall of Fame Coach (Texas, UNC)",
@@ -159,6 +159,98 @@ const Alumni = () => {
     }
 
     
+  ];
+
+  // Donation goals and current progress - will be fetched from Google Apps Script
+  const [donationProgress, setDonationProgress] = useState({
+    houseMaintenance: { current: 0, goal: 5000 },
+    poolTable: { current: 0, goal: 700 },
+    basketballHoop: { current: 0, goal: 100 },
+    nationalsIFC: { current: 0, goal: 2000 },
+    brotherhoodEvents: { current: 0, goal: 5000 },
+    partiesTailgates: { current: 0, goal: 5000 }
+  });
+
+  // Fetch donation progress from Google Apps Script
+  useEffect(() => {
+    console.log('useEffect triggered, API_BASE_URL:', API_BASE_URL);
+    const fetchDonationProgress = async () => {
+      try {
+        const url = `${API_BASE_URL}/api/donations/totals?t=${Date.now()}`;
+        console.log('Fetching from URL:', url);
+        const response = await fetch(url);
+        console.log('Response status:', response.status);
+        const data = await response.json();
+        console.log('Received data:', data);
+        
+        if (data.totals) {
+          console.log('Updating donation progress with:', data.totals);
+          setDonationProgress({
+            houseMaintenance: { current: data.totals['House Maintenance'] || 0, goal: 5000 },
+            poolTable: { current: data.totals['Pool Table'] || 0, goal: 700 },
+            basketballHoop: { current: data.totals['Basketball Hoop'] || 0, goal: 100 },
+            nationalsIFC: { current: data.totals['Nationals/IFC Dues'] || 0, goal: 2000 },
+            brotherhoodEvents: { current: data.totals['Brotherhood Events'] || 0, goal: 5000 },
+            partiesTailgates: { current: data.totals['Parties & Tailgates'] || 0, goal: 5000 }
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch donation progress:', error);
+        // Keep existing values if fetch fails
+      }
+    };
+
+    fetchDonationProgress();
+  }, []);
+
+  const formatUsd = (amount) => amount.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  const calcPercent = (current, goal) => {
+    if (!goal || goal <= 0) return 0;
+    const pct = Math.round((current / goal) * 100);
+    return Math.min(100, Math.max(0, isNaN(pct) ? 0 : pct));
+  };
+
+  const upcomingEvents = [
+    {
+      id: 'miami-fsu-2025',
+      title: 'Miami vs FSU Tailgate (Official Alumni Tailgate)',
+      dateDisplay: 'October 4, 2025',
+      sortDate: '2025-10-04',
+      type: 'Tailgate',
+      icon: 'fas fa-football-ball',
+      description: 'Our official alumni tailgate for the Miami vs FSU game. RSVP required for planning and communications.',
+      canRsvp: true
+    },
+    {
+      id: 'fsu-pitt-2025-10-11',
+      title: 'FSU vs Pittsburgh Tailgate',
+      dateDisplay: 'October 11, 2025',
+      sortDate: '2025-10-11',
+      type: 'Tailgate',
+      icon: 'fas fa-football-ball',
+      description: 'Join fellow alumni for an exciting tailgate before the FSU vs Pittsburgh football game.',
+      canRsvp: false
+    },
+    {
+      id: 'fsu-wake-2025-11-01',
+      title: 'FSU vs Wake Forest Tailgate',
+      dateDisplay: 'November 1, 2025',
+      sortDate: '2025-11-01',
+      type: 'Tailgate',
+      icon: 'fas fa-football-ball',
+      description: 'Connect with brothers and cheer on the Noles at our Wake Forest tailgate!',
+      canRsvp: false
+    },
+    {
+      id: 'saefari-2025-10-24',
+      title: 'SAEFARI',
+      dateDisplay: 'October 24, 2025',
+      sortDate: '2025-10-24',
+      type: 'Fall Party',
+      icon: 'fas fa-glass-cheers',
+      description: 'Our signature fall party returns. Don’t miss a great night with brothers and friends.',
+      canRsvp: false
+    }
   ];
 
   return (
@@ -213,26 +305,65 @@ const Alumni = () => {
       {/* Enhanced Upcoming Alumni Events Section */}
       <section className="alumni-events py-5 bg-gradient-light">
         <div className="container">
-          <h2 className="section-header text-center mb-5 animate-fade-in">Upcoming Alumni Events</h2>
+          <h2 className="section-header text-center mb-5 animate-fade-in">Upcoming Events</h2>
           <div className="row justify-content-center animate-fade-in-delay">
-            <div className="col-md-8 col-lg-6">
-              <div className="card h-100 hover-lift">
-                <div className="card-body text-center p-4">
-                  <div className="mb-3">
-                    <i className="fas fa-football-ball fa-3x text-gold"></i>
-                  </div>
-                  <h3 className="card-title text-royal-purple mb-3">Miami vs FSU Tailgate</h3>
-                  <span className="badge bg-primary mb-3 px-3 py-2 fs-6">Fall 2025</span>
-                  <p className="card-text lead mb-4">Join fellow alumni for an exciting tailgate before the Miami vs FSU football game. Connect with brothers, enjoy great food, and cheer on the Seminoles!</p>
-                  <div className="bg-gradient-light rounded p-3">
-                    <p className="text-muted mb-0 fw-semibold">
-                      <i className="fas fa-info-circle me-2"></i>
-                      RSVP below to let us know you're coming!
-                    </p>
+            {upcomingEvents
+              .slice()
+              .sort((a, b) => {
+                if (!a.sortDate && !b.sortDate) return 0;
+                if (!a.sortDate) return 1;
+                if (!b.sortDate) return -1;
+                return new Date(a.sortDate) - new Date(b.sortDate);
+              })
+              .map(evt => (
+              <div key={evt.id} className="col-md-6 col-lg-4 mb-4">
+                <div className="card h-100 hover-lift">
+                  <div className="card-body text-center p-4">
+                    <div className="mb-3">
+                      <i className={`${evt.icon} fa-3x text-gold`}></i>
+                    </div>
+                    <h3 className="card-title text-royal-purple mb-2">{evt.title}</h3>
+                    <span className="badge bg-primary mb-3 px-3 py-2 fs-6">{evt.dateDisplay}</span>
+                    <p className="card-text lead mb-4">{evt.description}</p>
+                    {evt.canRsvp ? (
+                      <div className="bg-gradient-light rounded p-3">
+                        <p className="text-muted mb-3 fw-semibold">
+                          <i className="fas fa-info-circle me-2"></i>
+                          RSVP below to let us know you're coming.
+                        </p>
+                        <a 
+                          href="#alumni-rsvp" 
+                          className="btn btn-royal-purple btn-lg hover-lift"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const el = document.getElementById('alumni-rsvp');
+                            if (el) {
+                              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                          }}
+                        >
+                          <i className="fas fa-check me-2"></i>RSVP Now
+                        </a>
+                      </div>
+                    ) : (
+                      <div className="bg-gradient-light rounded p-3">
+                        <p className="text-muted mb-3 fw-semibold">
+                          For details about attending this event, please contact our alumni relations team.
+                        </p>
+                        <a 
+                          href="mailto:flbetasae@gmail.com?subject=Event%20Inquiry:%20" 
+                          className="btn btn-outline-primary hover-lift"
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          <i className="fas fa-envelope me-2"></i>Contact for Details
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -243,7 +374,7 @@ const Alumni = () => {
       {/* Enhanced Alumni Giving Section */}
       <section className="alumni-giving py-5 bg-white">
         <div className="container">
-          <div className="row align-items-center animate-fade-in">
+          <div className="row align-items-center animate-fade-in mb-5">
             <div className="col-md-6 mb-4 mb-md-0">
               <div className="position-relative">
                 <img 
@@ -257,33 +388,239 @@ const Alumni = () => {
             <div className="col-md-6">
               <h2 className="section-header text-start mb-4">Support Our Chapter</h2>
               <p className="lead mb-4">Your support helps ensure that future generations of SAE brothers at FSU have the same meaningful experiences that you cherished during your time at the chapter.</p>
-              
-              <div className="bg-gradient-light rounded p-4 mb-4">
-                <h4 className="text-royal-purple mb-3">
-                  <i className="fas fa-bullseye me-2 text-gold"></i>
-                  Current Initiatives:
-                </h4>
-                <ul className="list-unstyled">
-                  <li className="mb-2">
-                    <i className="fas fa-home me-2 text-gold"></i>
-                    Chapter House Renovation Fund
-                  </li>
-                  <li className="mb-2">
-                    <i className="fas fa-graduation-cap me-2 text-gold"></i>
-                    Academic Scholarship Fund
-                  </li>
-                  <li className="mb-2">
-                    <i className="fas fa-crown me-2 text-gold"></i>
-                    Leadership Development Program
-                  </li>
-                </ul>
-                <a href="https://sae.crowdchange.co/50202" className="btn btn-royal-purple btn-lg hover-lift" target="_blank" rel="noopener noreferrer">
-                  <i className="fas fa-chart-line me-2"></i>Make a Donation
-                </a>
+              <p className="mb-4">Choose a specific initiative below to make a targeted donation that directly impacts the areas you care most about.</p>
+            </div>
+          </div>
+
+          {/* Donation Categories */}
+          <div className="row g-4 animate-fade-in-delay">
+            <div className="col-lg-4 col-md-6">
+              <div className="card h-100 hover-lift">
+                <div className="card-body text-center p-4">
+                  <div className="mb-3">
+                    <i className="fas fa-home fa-3x text-royal-purple"></i>
+                  </div>
+                  <h4 className="card-title text-royal-purple mb-3">House Maintenance</h4>
+                  <div className="mb-3">
+                    <div className="d-flex justify-content-between mb-1">
+                      <small className="text-muted">{formatUsd(donationProgress.houseMaintenance.current)} raised</small>
+                      <small className="text-muted">{formatUsd(donationProgress.houseMaintenance.goal)} goal</small>
+                    </div>
+                    <div className="progress" style={{ height: 10 }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: `${calcPercent(donationProgress.houseMaintenance.current, donationProgress.houseMaintenance.goal)}%` }}
+                        aria-valuenow={calcPercent(donationProgress.houseMaintenance.current, donationProgress.houseMaintenance.goal)}
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="card-text mb-4">Support essential repairs, renovations, and improvements to our chapter house. Your donation helps maintain a safe, comfortable, and welcoming environment for current and future brothers.</p>
+                  <div className="d-grid gap-2">
+                    <a href="https://cash.app/$flbetaSAE" className="btn btn-royal-purple hover-lift" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-hammer me-2"></i>Donate via Cash App
+                    </a>
+                    <small className="text-muted">Include note: "SAE-FSU | House Maintenance | [Your Email]"</small>
+                    <a href="https://forms.gle/9vosLREeGcYbDokCA" className="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-check me-2"></i>Confirm Donation
+                    </a>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6">
+              <div className="card h-100 hover-lift">
+                <div className="card-body text-center p-4">
+                  <div className="mb-3">
+                    <i className="fas fa-dice fa-3x text-royal-purple"></i>
+                  </div>
+                  <h4 className="card-title text-royal-purple mb-3">Pool Table</h4>
+                  <div className="mb-3">
+                    <div className="d-flex justify-content-between mb-1">
+                      <small className="text-muted">{formatUsd(donationProgress.poolTable.current)} raised</small>
+                      <small className="text-muted">{formatUsd(donationProgress.poolTable.goal)} goal</small>
+                    </div>
+                    <div className="progress" style={{ height: 10 }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: `${calcPercent(donationProgress.poolTable.current, donationProgress.poolTable.goal)}%` }}
+                        aria-valuenow={calcPercent(donationProgress.poolTable.current, donationProgress.poolTable.goal)}
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="card-text mb-4">Help us add a professional pool table to our common areas. This will provide brothers with a great way to relax, bond, and enjoy friendly competition between classes and study sessions.</p>
+                  <div className="d-grid gap-2">
+                    <a href="https://cash.app/$flbetaSAE" className="btn btn-royal-purple hover-lift" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-dice me-2"></i>Donate via Cash App
+                    </a>
+                    <small className="text-muted">Include note: "SAE-FSU | Pool Table | [Your Email]"</small>
+                    <a href="https://forms.gle/9vosLREeGcYbDokCA" className="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-check me-2"></i>Confirm Donation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6">
+              <div className="card h-100 hover-lift">
+                <div className="card-body text-center p-4">
+                  <div className="mb-3">
+                    <i className="fas fa-basketball-ball fa-3x text-royal-purple"></i>
+                  </div>
+                  <h4 className="card-title text-royal-purple mb-3">Basketball Hoop</h4>
+                  <div className="mb-3">
+                    <div className="d-flex justify-content-between mb-1">
+                      <small className="text-muted">{formatUsd(donationProgress.basketballHoop.current)} raised</small>
+                      <small className="text-muted">{formatUsd(donationProgress.basketballHoop.goal)} goal</small>
+                    </div>
+                    <div className="progress" style={{ height: 10 }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: `${calcPercent(donationProgress.basketballHoop.current, donationProgress.basketballHoop.goal)}%` }}
+                        aria-valuenow={calcPercent(donationProgress.basketballHoop.current, donationProgress.basketballHoop.goal)}
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="card-text mb-4">Support the installation of a basketball hoop for outdoor recreation. This addition will encourage physical activity, intramural sports participation, and brotherhood bonding through friendly competition.</p>
+                  <div className="d-grid gap-2">
+                    <a href="https://cash.app/$flbetaSAE" className="btn btn-royal-purple hover-lift" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-basketball-ball me-2"></i>Donate via Cash App
+                    </a>
+                    <small className="text-muted">Include note: "SAE-FSU | Basketball Hoop | [Your Email]"</small>
+                    <a href="https://forms.gle/9vosLREeGcYbDokCA" className="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-check me-2"></i>Confirm Donation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6">
+              <div className="card h-100 hover-lift">
+                <div className="card-body text-center p-4">
+                  <div className="mb-3">
+                    <i className="fas fa-graduation-cap fa-3x text-royal-purple"></i>
+                  </div>
+                  <h4 className="card-title text-royal-purple mb-3">Nationals/IFC Dues</h4>
+                  <div className="mb-3">
+                    <div className="d-flex justify-content-between mb-1">
+                      <small className="text-muted">{formatUsd(donationProgress.nationalsIFC.current)} raised</small>
+                      <small className="text-muted">{formatUsd(donationProgress.nationalsIFC.goal)} goal</small>
+                    </div>
+                    <div className="progress" style={{ height: 10 }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: `${calcPercent(donationProgress.nationalsIFC.current, donationProgress.nationalsIFC.goal)}%` }}
+                        aria-valuenow={calcPercent(donationProgress.nationalsIFC.current, donationProgress.nationalsIFC.goal)}
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="card-text mb-4">Help cover essential fraternity dues including SAE Nationals fees and Interfraternity Council dues. These payments ensure our chapter remains in good standing and maintains access to national resources and campus recognition.</p>
+                  <div className="d-grid gap-2">
+                    <a href="https://cash.app/$flbetaSAE" className="btn btn-royal-purple hover-lift" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-graduation-cap me-2"></i>Donate via Cash App
+                    </a>
+                    <small className="text-muted">Include note: "SAE-FSU | Nationals/IFC Dues | [Your Email]"</small>
+                    <a href="https://forms.gle/9vosLREeGcYbDokCA" className="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-check me-2"></i>Confirm Donation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6">
+              <div className="card h-100 hover-lift">
+                <div className="card-body text-center p-4">
+                  <div className="mb-3">
+                    <i className="fas fa-handshake fa-3x text-royal-purple"></i>
+                  </div>
+                  <h4 className="card-title text-royal-purple mb-3">Brotherhood Events</h4>
+                  <div className="mb-3">
+                    <div className="d-flex justify-content-between mb-1">
+                      <small className="text-muted">{formatUsd(donationProgress.brotherhoodEvents.current)} raised</small>
+                      <small className="text-muted">{formatUsd(donationProgress.brotherhoodEvents.goal)} goal</small>
+                    </div>
+                    <div className="progress" style={{ height: 10 }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: `${calcPercent(donationProgress.brotherhoodEvents.current, donationProgress.brotherhoodEvents.goal)}%` }}
+                        aria-valuenow={calcPercent(donationProgress.brotherhoodEvents.current, donationProgress.brotherhoodEvents.goal)}
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="card-text mb-4">Support alumni and brotherhood events that strengthen our bonds across generations. Your donation helps fund alumni tailgates, networking events, and mentorship programs that keep our brotherhood strong.</p>
+                  <div className="d-grid gap-2">
+                    <a href="https://cash.app/$flbetaSAE" className="btn btn-royal-purple hover-lift" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-handshake me-2"></i>Donate via Cash App
+                    </a>
+                    <small className="text-muted">Include note: "SAE-FSU | Brotherhood Events | [Your Email]"</small>
+                    <a href="https://forms.gle/9vosLREeGcYbDokCA" className="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-check me-2"></i>Confirm Donation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6">
+              <div className="card h-100 hover-lift">
+                <div className="card-body text-center p-4">
+                  <div className="mb-3">
+                    <i className="fas fa-glass-cheers fa-3x text-royal-purple"></i>
+                  </div>
+                  <h4 className="card-title text-royal-purple mb-3">Parties & Tailgates</h4>
+                  <div className="mb-3">
+                    <div className="d-flex justify-content-between mb-1">
+                      <small className="text-muted">{formatUsd(donationProgress.partiesTailgates.current)} raised</small>
+                      <small className="text-muted">{formatUsd(donationProgress.partiesTailgates.goal)} goal</small>
+                    </div>
+                    <div className="progress" style={{ height: 10 }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: `${calcPercent(donationProgress.partiesTailgates.current, donationProgress.partiesTailgates.goal)}%` }}
+                        aria-valuenow={calcPercent(donationProgress.partiesTailgates.current, donationProgress.partiesTailgates.goal)}
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="card-text mb-4">Help fund social events, parties, and tailgates that create memorable experiences for our brothers. These events build lasting friendships and create the college memories that define the SAE experience.</p>
+                  <div className="d-grid gap-2">
+                    <a href="https://cash.app/$flbetaSAE" className="btn btn-royal-purple hover-lift" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-glass-cheers me-2"></i>Donate via Cash App
+                    </a>
+                    <small className="text-muted">Include note: "SAE-FSU | Parties & Tailgates | [Your Email]"</small>
+                    <a href="https://forms.gle/9vosLREeGcYbDokCA" className="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-check me-2"></i>Confirm Donation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
               
-              {/* Alumni Hiring Section */}
-              <div className="bg-gradient-light rounded p-4 mb-4 mt-4">
+          {/* Alumni Hiring Section */}
+          <div className="row mt-5 animate-fade-in-delay">
+            <div className="col-12">
+              <div className="bg-gradient-light rounded p-4">
                 <h4 className="text-royal-purple mb-3">
                   <i className="fas fa-briefcase me-2 text-gold"></i>
                   Alumni: Interested in Hiring Our Brothers?
