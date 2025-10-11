@@ -209,6 +209,9 @@ body, html {
   border-radius: 1.5rem !important;
   overflow: hidden;
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .fundraising-card::before {
@@ -223,6 +226,13 @@ body, html {
 
 .fundraising-card:hover {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.fundraising-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .fundraising-progress .progress {
@@ -324,6 +334,29 @@ body, html {
   font-weight: 700;
 }
 
+/* Competitor Image Styling */
+.competitor-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.competitor-image {
+  width: 150px;
+  height: 120px;
+  object-fit: cover;
+  border: 4px solid #916f41;
+  border-radius: 0.75rem !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.competitor-image:hover {
+  transform: scale(1.05);
+  border-color: #4B306A;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
 /* Panhellenic Section */
 .panhellenic-section {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -383,6 +416,22 @@ footer {
   background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%) !important;
 }
 
+/* Uniform Card Heights */
+.current-fundraising .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.current-fundraising .col-md-8,
+.current-fundraising .col-lg-6 {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.current-fundraising .fundraising-card {
+  min-height: 500px;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .display-2 {
@@ -400,6 +449,10 @@ footer {
   
   .highlight-box {
     padding: 1rem;
+  }
+  
+  .fundraising-card {
+    min-height: 450px;
   }
   
   .fundraising-card .card-body {
@@ -429,6 +482,18 @@ footer {
   .col-md-6, .col-lg-6, .col-md-5, .col-lg-4, .col-md-7, .col-lg-8 {
     padding-left: 15px;
     padding-right: 15px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .fundraising-card {
+    min-height: 480px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .fundraising-card {
+    min-height: 520px;
   }
 }
 

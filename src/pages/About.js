@@ -73,7 +73,7 @@ const About = () => {
                   <div className="icon-wrapper mb-4">
                     <i className="fas fa-users fa-3x"></i>
                   </div>
-                  <h3 className="h4 mb-3 text-royal-purple">Brotherhood</h3>
+                  <h3 className="h4 mb-3 text-royal-purple">Friendship</h3>
                   <p className="fs-6">Fostering lifelong bonds and mutual support among members through shared experiences and values.</p>
                 </div>
               </div>

@@ -53,43 +53,163 @@ const Philanthropy = () => {
         <div className="container">
           <h2 className="section-header text-center mb-5">
             <i className="fas fa-hand-holding-heart text-gold me-3"></i>
-            Current Fundraising Campaigns
+            Current Philanthropy Events
           </h2>
           <div className="row g-4 justify-content-center">
+            {/* Champs Chance Event Card */}
             <div className="col-md-8 col-lg-6">
               <div className="fundraising-card card border-0 shadow-lg hover-lift">
                 <div className="card-body p-5">
                   <div className="text-center mb-4">
-                    <i className="fas fa-home fa-3x text-royal-purple mb-3"></i>
-                    <h3 className="card-title h3 text-royal-purple mb-4">SAE Florida Beta: Rebuild & Rise</h3>
+                    <i className="fas fa-paw fa-3x text-royal-purple mb-3"></i>
+                    <h3 className="card-title h3 text-royal-purple mb-4">Champs Chance Event</h3>
+                    <div className="d-flex justify-content-center align-items-center mb-3">
+                      <span className="badge bg-gold text-dark px-3 py-2 me-2">Delta Gamma</span>
+                      <span className="badge bg-royal-purple text-white px-3 py-2">Sigma Alpha Epsilon</span>
+                    </div>
                   </div>
                   
-                  <p className="card-text lead mb-4">Florida Beta has always been more than just a house—it's where lifelong friendships are built, memories are made, and leaders are born. As we look to the future, we're launching the Rebuild & Rise Campaign to take care of much-needed repairs and upgrades that will keep 415 W College Ave strong for the next generation of brothers.</p>
+                  <p className="card-text lead mb-4">Meet the pups & join us for a day filled with support for Champs Chance.</p>
                   
-                  <div className="fundraising-progress mb-4">
-                    <div className="d-flex justify-content-between align-items-center mb-2">
-                      <span className="fw-bold text-royal-purple">Progress</span>
-                      <span className="badge bg-royal-purple px-3 py-2">7% Complete</span>
-                    </div>
-                    <div className="progress mb-3" style={{ height: '30px' }}>
-                      <div className="progress-bar bg-gradient-royal" role="progressbar" style={{ width: '7%' }} aria-valuenow="7" aria-valuemin="0" aria-valuemax="100">
-                        <span className="fw-bold">7%</span>
+                  <div className="event-details mb-4">
+                    <div className="row text-center">
+                      <div className="col-md-6 mb-3">
+                        <div className="detail-item">
+                          <i className="fas fa-calendar-alt text-gold mb-2"></i>
+                          <h6 className="text-royal-purple fw-bold mb-1">Date</h6>
+                          <p className="text-muted mb-0">Monday, October 13th</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                      <span className="text-muted">$700 raised</span>
-                      <span className="text-muted">$10,000 goal</span>
+                      <div className="col-md-6 mb-3">
+                        <div className="detail-item">
+                          <i className="fas fa-clock text-gold mb-2"></i>
+                          <h6 className="text-royal-purple fw-bold mb-1">Time</h6>
+                          <p className="text-muted mb-0">3:00 PM - 5:30 PM</p>
+                        </div>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <div className="detail-item">
+                          <i className="fas fa-map-marker-alt text-gold mb-2"></i>
+                          <h6 className="text-royal-purple fw-bold mb-1">Location</h6>
+                          <p className="text-muted mb-0">415 W College Ave</p>
+                        </div>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <div className="detail-item">
+                          <i className="fas fa-ticket-alt text-gold mb-2"></i>
+                          <h6 className="text-royal-purple fw-bold mb-1">Tickets</h6>
+                          <p className="text-muted mb-0">$7 per ticket</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
                   <a 
-                    href="https://sae.crowdchange.co/50202" 
+                    href="https://venmo.com/champschance" 
+                    className="btn btn-royal-purple btn-lg w-100" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-cc-paypal me-2"></i>
+                    Pay with Venmo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Mr. Casanova Competition Card */}
+            <div className="col-md-8 col-lg-6">
+              <div className="fundraising-card card border-0 shadow-lg hover-lift">
+                <div className="card-body p-5">
+                  <div className="text-center mb-4">
+                    <div className="competitor-image-container mb-3">
+                      <img 
+                        src="/images/yonce.jpg" 
+                        alt="Payton Yonce - SAE Mr. Casanova Competitor" 
+                        className="competitor-image rounded shadow"
+                      />
+                    </div>
+                    <h3 className="card-title h3 text-royal-purple mb-3">Mr. Casanova Competition</h3>
+                    <div className="d-flex justify-content-center align-items-center mb-3">
+                      <span className="badge bg-gold text-dark px-3 py-2 me-2">Kappa Alpha Theta</span>
+                      <span className="badge bg-royal-purple text-white px-3 py-2">Sigma Alpha Epsilon</span>
+                    </div>
+                    <h4 className="h5 text-gold mb-3">Supporting Payton Yonce</h4>
+                  </div>
+                  
+                  <p className="card-text lead mb-4">Join us in supporting our brother <strong className="text-royal-purple">Payton Yonce</strong> in the Kappa Alpha Theta Mr. Casanova competition! All proceeds benefit the <strong className="text-gold">CASA Foundation</strong>.</p>
+                  
+                  <div className="cause-highlight mb-4">
+                    <div className="highlight-box text-center">
+                      <i className="fas fa-heart text-gold mb-2"></i>
+                      <h6 className="text-royal-purple fw-bold mb-2">CASA Foundation</h6>
+                      <p className="text-muted mb-0 small">Court Appointed Special Advocates for children in foster care</p>
+                    </div>
+                  </div>
+                  
+                  <a 
+                    href="https://theta.crowdchange.co/51556/page/835265" 
                     className="btn btn-royal-purple btn-lg w-100" 
                     target="_blank" 
                     rel="noopener noreferrer"
                   >
                     <i className="fas fa-donate me-2"></i>
-                    Donate Now
+                    Donate to Support Payton
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Movember Month Card */}
+            <div className="col-md-8 col-lg-6">
+              <div className="fundraising-card card border-0 shadow-lg hover-lift">
+                <div className="card-body p-5">
+                  <div className="text-center mb-4">
+                    <i className="fas fa-mustache fa-3x text-royal-purple mb-3"></i>
+                    <h3 className="card-title h3 text-royal-purple mb-4">Movember Month</h3>
+                    <div className="d-flex justify-content-center align-items-center mb-3">
+                      <span className="badge bg-gold text-dark px-3 py-2 me-2">Men's Mental Health</span>
+                      <span className="badge bg-royal-purple text-white px-3 py-2">No Shave November</span>
+                    </div>
+                  </div>
+                  
+                  <p className="card-text lead mb-4">Join SAE brothers in raising awareness for <strong className="text-royal-purple">men's mental health</strong> and supporting <strong className="text-gold">No Shave November</strong>. Together, we're breaking the silence and promoting mental wellness.</p>
+                  
+                  <div className="movember-highlights mb-4">
+                    <div className="row text-center">
+                      <div className="col-md-6 mb-3">
+                        <div className="highlight-item">
+                          <i className="fas fa-brain text-gold mb-2"></i>
+                          <h6 className="text-royal-purple fw-bold mb-1">Mental Health</h6>
+                          <p className="text-muted mb-0 small">Awareness & Support</p>
+                        </div>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <div className="highlight-item">
+                          <i className="fas fa-cut text-gold mb-2"></i>
+                          <h6 className="text-royal-purple fw-bold mb-1">No Shave</h6>
+                          <p className="text-muted mb-0 small">November Challenge</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="cause-highlight mb-4">
+                    <div className="highlight-box text-center">
+                      <i className="fas fa-heart text-gold mb-2"></i>
+                      <h6 className="text-royal-purple fw-bold mb-2">Movember Foundation</h6>
+                      <p className="text-muted mb-0 small">Supporting men's health initiatives worldwide</p>
+                    </div>
+                  </div>
+                  
+                  <a 
+                    href="https://us.movember.com/" 
+                    className="btn btn-royal-purple btn-lg w-100" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fas fa-external-link-alt me-2"></i>
+                    Learn More About Movember
                   </a>
                 </div>
               </div>
@@ -166,7 +286,7 @@ const Philanthropy = () => {
           <div className="text-center mb-5">
             <h2 className="section-header mb-4">
               <i className="fas fa-users text-gold me-3"></i>
-              Panhellenic Competitors
+              2024-2025 Panhellenic Competitors
             </h2>
             <p className="lead text-muted">Our brothers proudly represent SAE in campus-wide philanthropy competitions</p>
           </div>

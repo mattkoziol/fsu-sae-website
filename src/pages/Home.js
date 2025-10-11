@@ -7,7 +7,7 @@ import newsletterPreview from '../assets/newsletter/newsletter-preview.png';
 import newsletter1 from '../assets/newsletter/newsletter1.png';
 import newsletter2 from '../assets/newsletter/newsletter2.png';
 import newsletter3 from '../assets/newsletter/newsletter3.png';
-import saeHouse from '../assets/housephoto.jpg';
+import saeHouse from '../assets/2025FallHouse.jpg';
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5001';
 
 function Home() {
@@ -277,36 +277,7 @@ function Home() {
         </div>
       )}
 
-      <section className="rush-events py-5 bg-gradient-light animate-fade-in-delay">
-        <div className="container">
-          <h2 className="section-header text-center display-5 mb-5">
-            <i className="fas fa-calendar-check me-3 text-royal-purple"></i>
-            Rush Events
-          </h2>
-          <div className="row justify-content-center">
-            <div className="col-md-8 col-lg-6">
-              <div className="card rush-card hover-lift">
-                <div className="card-body text-center">
-                  <div className="rush-icon mb-3">
-                    <i className="fas fa-users fa-3x text-royal-purple"></i>
-                  </div>
-                  <h5 className="card-title text-royal-purple">
-                    <i className="fas fa-handshake me-2"></i>
-                    Meet the Brothers
-                  </h5>
-                  <h6 className="card-subtitle mb-3 text-gold">Fall Rush Event Dates Coming Soon</h6>
-                  <p className="card-text text-muted lh-lg">Join us at the chapter house to meet the brothers and learn more about SAE.</p>
-                  <div className="rush-divider"></div>
-                  <small className="text-muted">
-                    <i className="fas fa-info-circle me-2"></i>
-                    Stay tuned for upcoming event announcements
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  
 
       <section className="connect py-5 text-center animate-fade-in">
         <div className="container">
@@ -341,17 +312,7 @@ function Home() {
             </a>
           </div>
           <div className="connect-buttons">
-            <div className="mb-4">
-              <a
-                href="https://linktr.ee/FSUIFC?lt_utm_source=lt_share_link#476193446"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-royal-purple btn-lg px-5 py-3 me-3 hover-lift"
-              >
-                <i className="fas fa-user-plus me-2"></i>
-                Register for Fall Rush 2025
-              </a>
-            </div>
+            
             <div>
               <a 
                 className="btn btn-outline-royal-purple btn-lg px-5 py-3 hover-lift"
