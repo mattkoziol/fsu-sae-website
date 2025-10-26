@@ -116,6 +116,30 @@ const ActiveMembers = () => {
       time: "ALL DAY",
       location: "NOLA",
       description: "NOLA FORMAL"
+    },
+    {
+      id: 13,
+      title: "Date Function",
+      date: "2025-11-05",
+      time: "7:00 PM - 11:00 PM",
+      location: "Recess",
+      description: "Date Function - Theme TBD"
+    },
+    {
+      id: 14,
+      title: "Peak Pulse Run Club",
+      date: "2025-10-26",
+      time: "2:00 PM",
+      location: "House",
+      description: "Peak Pulse Run Club"
+    },
+    {
+      id: 15,
+      title: "Chapter",
+      date: "2025-10-27",
+      time: "TBD",
+      location: "House",
+      description: "Chapter Meeting"
     }
   ];
 
