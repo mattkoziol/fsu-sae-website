@@ -56,110 +56,6 @@ const Philanthropy = () => {
             Current Philanthropy Events
           </h2>
           <div className="row g-4 justify-content-center">
-            {/* Champs Chance Event Card */}
-            <div className="col-md-8 col-lg-6">
-              <div className="fundraising-card card border-0 shadow-lg hover-lift">
-                <div className="card-body p-5">
-                  <div className="text-center mb-4">
-                    <i className="fas fa-paw fa-3x text-royal-purple mb-3"></i>
-                    <h3 className="card-title h3 text-royal-purple mb-4">Champs Chance Event</h3>
-                    <div className="d-flex justify-content-center align-items-center mb-3">
-                      <span className="badge bg-gold text-dark px-3 py-2 me-2">Delta Gamma</span>
-                      <span className="badge bg-royal-purple text-white px-3 py-2">Sigma Alpha Epsilon</span>
-                    </div>
-                  </div>
-                  
-                  <p className="card-text lead mb-4">Meet the pups & join us for a day filled with support for Champs Chance.</p>
-                  
-                  <div className="event-details mb-4">
-                    <div className="row text-center">
-                      <div className="col-md-6 mb-3">
-                        <div className="detail-item">
-                          <i className="fas fa-calendar-alt text-gold mb-2"></i>
-                          <h6 className="text-royal-purple fw-bold mb-1">Date</h6>
-                          <p className="text-muted mb-0">Monday, October 13th</p>
-                        </div>
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <div className="detail-item">
-                          <i className="fas fa-clock text-gold mb-2"></i>
-                          <h6 className="text-royal-purple fw-bold mb-1">Time</h6>
-                          <p className="text-muted mb-0">3:00 PM - 5:30 PM</p>
-                        </div>
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <div className="detail-item">
-                          <i className="fas fa-map-marker-alt text-gold mb-2"></i>
-                          <h6 className="text-royal-purple fw-bold mb-1">Location</h6>
-                          <p className="text-muted mb-0">415 W College Ave</p>
-                        </div>
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <div className="detail-item">
-                          <i className="fas fa-ticket-alt text-gold mb-2"></i>
-                          <h6 className="text-royal-purple fw-bold mb-1">Tickets</h6>
-                          <p className="text-muted mb-0">$7 per ticket</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <a 
-                    href="https://venmo.com/champschance" 
-                    className="btn btn-royal-purple btn-lg w-100" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-cc-paypal me-2"></i>
-                    Pay with Venmo
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Mr. Casanova Competition Card */}
-            <div className="col-md-8 col-lg-6">
-              <div className="fundraising-card card border-0 shadow-lg hover-lift">
-                <div className="card-body p-5">
-                  <div className="text-center mb-4">
-                    <div className="competitor-image-container mb-3">
-                      <img 
-                        src="/images/yonce.jpg" 
-                        alt="Payton Yonce - SAE Mr. Casanova Competitor" 
-                        className="competitor-image rounded shadow"
-                      />
-                    </div>
-                    <h3 className="card-title h3 text-royal-purple mb-3">Mr. Casanova Competition</h3>
-                    <div className="d-flex justify-content-center align-items-center mb-3">
-                      <span className="badge bg-gold text-dark px-3 py-2 me-2">Kappa Alpha Theta</span>
-                      <span className="badge bg-royal-purple text-white px-3 py-2">Sigma Alpha Epsilon</span>
-                    </div>
-                    <h4 className="h5 text-gold mb-3">Supporting Payton Yonce</h4>
-                  </div>
-                  
-                  <p className="card-text lead mb-4">Join us in supporting our brother <strong className="text-royal-purple">Payton Yonce</strong> in the Kappa Alpha Theta Mr. Casanova competition! All proceeds benefit the <strong className="text-gold">CASA Foundation</strong>.</p>
-                  
-                  <div className="cause-highlight mb-4">
-                    <div className="highlight-box text-center">
-                      <i className="fas fa-heart text-gold mb-2"></i>
-                      <h6 className="text-royal-purple fw-bold mb-2">CASA Foundation</h6>
-                      <p className="text-muted mb-0 small">Court Appointed Special Advocates for children in foster care</p>
-                    </div>
-                  </div>
-                  
-                  <a 
-                    href="https://theta.crowdchange.co/51556/page/835265" 
-                    className="btn btn-royal-purple btn-lg w-100" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fas fa-donate me-2"></i>
-                    Donate to Support Payton
-                  </a>
-                </div>
-              </div>
-            </div>
-
             {/* Movember Month Card */}
             <div className="col-md-8 col-lg-6">
               <div className="fundraising-card card border-0 shadow-lg hover-lift">
@@ -214,6 +110,7 @@ const Philanthropy = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -226,7 +123,217 @@ const Philanthropy = () => {
             Past Philanthropy Events
           </h2>
           
-          {/* Event 1 */}
+          {/* Delta Gamma Anchorsplash Competition Event */}
+          <div className="row mb-5 align-items-center g-5">
+            <div className="col-md-5 col-lg-4">
+              <div className="event-image-container hover-lift">
+                <img src="/images/Julius.jpg" alt="Julius Talas - Delta Gamma Anchorsplash Winner" className="img-fluid rounded-3 shadow-lg" />
+                <div className="event-badge">
+                  <span className="badge bg-gold text-dark px-3 py-2">2025</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-7 col-lg-8">
+              <div className="event-card card border-0 shadow-sm hover-lift">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="fas fa-trophy text-gold me-2"></i>
+                    <h3 className="h4 mb-0 text-royal-purple">Delta Gamma Anchorsplash Competition - 2025</h3>
+                  </div>
+                  
+                  <p className="lead mb-3">Congratulations to our brother <strong className="text-royal-purple">Julius Talas</strong> for representing SAE in the Delta Gamma Anchorsplash competition! Julius won the <strong className="text-gold">Dance portion</strong> of the competition and raised <strong className="text-gold">$800</strong> for <strong className="text-gold">Service For Sight</strong>.</p>
+                  
+                  <div className="event-highlights mb-3">
+                    <h6 className="text-royal-purple fw-bold mb-2">Competition Highlights:</h6>
+                    <ul className="list-unstyled">
+                      <li><i className="fas fa-trophy text-gold me-2"></i>Winner of the Dance Competition</li>
+                      <li><i className="fas fa-dollar-sign text-gold me-2"></i>$800 raised for Service For Sight</li>
+                      <li><i className="fas fa-eye text-gold me-2"></i>Benefiting individuals with visual impairments</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="success-metric">
+                    <div className="metric-card bg-gradient-light p-3 rounded">
+                      <div className="row text-center">
+                        <div className="col">
+                          <h5 className="text-gold mb-1">$800</h5>
+                          <small className="text-muted">Raised</small>
+                        </div>
+                        <div className="col">
+                          <h5 className="text-royal-purple mb-1">1</h5>
+                          <small className="text-muted">Competition Won</small>
+                        </div>
+                        <div className="col">
+                          <h5 className="text-gold mb-1">1</h5>
+                          <small className="text-muted">Week Competition</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Zeta King Competition Event */}
+          <div className="row mb-5 align-items-center g-5">
+            <div className="col-md-5 col-lg-4">
+              <div className="event-image-container hover-lift">
+                <img src="/images/Hallet.jpg" alt="Connor Hallett - Zeta King Competition" className="img-fluid rounded-3 shadow-lg" />
+                <div className="event-badge">
+                  <span className="badge bg-gold text-dark px-3 py-2">2025</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-7 col-lg-8">
+              <div className="event-card card border-0 shadow-sm hover-lift">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="fas fa-ribbon text-gold me-2"></i>
+                    <h3 className="h4 mb-0 text-royal-purple">Zeta King Competition - 2025</h3>
+                  </div>
+                  
+                  <p className="lead mb-3">Our brother <strong className="text-royal-purple">Connor Hallett</strong> was nominated by the ladies of <strong className="text-royal-purple">Zeta Tau Alpha</strong> to represent SAE in their 2025 Zeta King competition. Throughout the competition, Connor worked alongside the ZTA sisters to raise <strong className="text-gold">$1,000</strong> for their national philanthropy, which focuses on <strong className="text-gold">breast cancer research and awareness</strong>.</p>
+                  
+                  <div className="event-highlights mb-3">
+                    <h6 className="text-royal-purple fw-bold mb-2">Competition Highlights:</h6>
+                    <ul className="list-unstyled">
+                      <li><i className="fas fa-dollar-sign text-gold me-2"></i>$1,000 raised for breast cancer research and awareness</li>
+                      <li><i className="fas fa-heart text-gold me-2"></i>Supporting Zeta Tau Alpha's national philanthropy</li>
+                      <li><i className="fas fa-calendar-alt text-gold me-2"></i>Field Day on October 16th (5-7 PM)</li>
+                      <li><i className="fas fa-running text-gold me-2"></i>Race To Live 5k on October 26th</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="success-metric">
+                    <div className="metric-card bg-gradient-light p-3 rounded">
+                      <div className="row text-center">
+                        <div className="col">
+                          <h5 className="text-gold mb-1">$1,000</h5>
+                          <small className="text-muted">Raised</small>
+                        </div>
+                        <div className="col">
+                          <h5 className="text-royal-purple mb-1">ZTA</h5>
+                          <small className="text-muted">Partner Organization</small>
+                        </div>
+                        <div className="col">
+                          <h5 className="text-gold mb-1">Breast Cancer</h5>
+                          <small className="text-muted">Cause Supported</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mr. Casanova Competition Event */}
+          <div className="row mb-5 align-items-center g-5">
+            <div className="col-md-5 col-lg-4">
+              <div className="event-image-container hover-lift">
+                <img src="/images/yonce.jpg" alt="Payton Yonce - SAE Mr. Casanova Competitor" className="img-fluid rounded-3 shadow-lg" />
+                <div className="event-badge">
+                  <span className="badge bg-gold text-dark px-3 py-2">2025</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-7 col-lg-8">
+              <div className="event-card card border-0 shadow-sm hover-lift">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="fas fa-heart text-gold me-2"></i>
+                    <h3 className="h4 mb-0 text-royal-purple">Mr. Casanova Competition - 2025</h3>
+                  </div>
+                  
+                  <p className="lead mb-3">Our brother <strong className="text-royal-purple">Payton Yonce</strong> represented SAE in the Kappa Alpha Theta Mr. Casanova competition, raising <strong className="text-gold">$4,000</strong> for the <strong className="text-gold">CASA Foundation</strong>.</p>
+                  
+                  <div className="event-highlights mb-3">
+                    <h6 className="text-royal-purple fw-bold mb-2">Competition Highlights:</h6>
+                    <ul className="list-unstyled">
+                      <li><i className="fas fa-dollar-sign text-gold me-2"></i>$4,000 raised for CASA Foundation</li>
+                      <li><i className="fas fa-heart text-gold me-2"></i>Benefiting Court Appointed Special Advocates for children in foster care</li>
+                      <li><i className="fas fa-users text-gold me-2"></i>Representing SAE in campus-wide philanthropy competition</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="success-metric">
+                    <div className="metric-card bg-gradient-light p-3 rounded">
+                      <div className="row text-center">
+                        <div className="col">
+                          <h5 className="text-gold mb-1">$4,000</h5>
+                          <small className="text-muted">Raised</small>
+                        </div>
+                        <div className="col">
+                          <h5 className="text-royal-purple mb-1">Kappa Alpha Theta</h5>
+                          <small className="text-muted">Partner Organization</small>
+                        </div>
+                        <div className="col">
+                          <h5 className="text-gold mb-1">CASA</h5>
+                          <small className="text-muted">Foundation Supported</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Champs Chance Event */}
+          <div className="row mb-5 align-items-center g-5">
+            <div className="col-md-5 col-lg-4">
+              <div className="event-image-container hover-lift">
+                <img src="/images/ChampsChance.jpg" alt="Champs Chance Event 2025" className="img-fluid rounded-3 shadow-lg" />
+                <div className="event-badge">
+                  <span className="badge bg-gold text-dark px-3 py-2">2025</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-7 col-lg-8">
+              <div className="event-card card border-0 shadow-sm hover-lift">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="fas fa-paw text-gold me-2"></i>
+                    <h3 className="h4 mb-0 text-royal-purple">Champs Chance Event - 2025</h3>
+                  </div>
+                  
+                  <p className="lead mb-3">We partnered with <strong className="text-royal-purple">Delta Gamma</strong> to host the Champs Chance event at our house. Brothers and sisters came together to meet the pups and support a day filled with fundraising for <strong className="text-gold">Champs Chance</strong>. Together, we raised <strong className="text-gold">$1,200</strong> for this important cause.</p>
+                  
+                  <div className="event-highlights mb-3">
+                    <h6 className="text-royal-purple fw-bold mb-2">Event Details:</h6>
+                    <ul className="list-unstyled">
+                      <li><i className="fas fa-calendar-alt text-gold me-2"></i>Monday, October 13th, 2025</li>
+                      <li><i className="fas fa-clock text-gold me-2"></i>3:00 PM - 5:30 PM</li>
+                      <li><i className="fas fa-map-marker-alt text-gold me-2"></i>415 W College Ave</li>
+                      <li><i className="fas fa-paw text-gold me-2"></i>Dog shelter foster event fundraiser</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="success-metric">
+                    <div className="metric-card bg-gradient-light p-3 rounded">
+                      <div className="row text-center">
+                        <div className="col">
+                          <h5 className="text-gold mb-1">$1,200</h5>
+                          <small className="text-muted">Raised</small>
+                        </div>
+                        <div className="col">
+                          <h5 className="text-royal-purple mb-1">Delta Gamma</h5>
+                          <small className="text-muted">Partner Organization</small>
+                        </div>
+                        <div className="col">
+                          <h5 className="text-gold mb-1">1</h5>
+                          <small className="text-muted">Day Event</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Paddy Murphy Week Event */}
           <div className="row mb-5 align-items-center g-5">
             <div className="col-md-5 col-lg-4">
               <div className="event-image-container hover-lift">
