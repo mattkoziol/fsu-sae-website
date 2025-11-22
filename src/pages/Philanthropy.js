@@ -127,7 +127,7 @@ const Philanthropy = () => {
           <div className="row mb-5 align-items-center g-5">
             <div className="col-md-5 col-lg-4">
               <div className="event-image-container hover-lift">
-                <img src="/images/Julius.jpg" alt="Julius Talas - Delta Gamma Anchorsplash Winner" className="img-fluid rounded-3 shadow-lg" />
+                <img src="/images/Julius.JPG" alt="Julius Talas - Delta Gamma Anchorsplash Winner" className="img-fluid rounded-3 shadow-lg" />
                 <div className="event-badge">
                   <span className="badge bg-gold text-dark px-3 py-2">2025</span>
                 </div>
