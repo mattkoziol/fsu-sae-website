@@ -184,7 +184,7 @@ const About = () => {
                   </p>
                   <div className="mt-4">
                     <a 
-                      href="mailto:matthewkoizol04@gmail.com" 
+                      href="mailto:matthewkoziol04@gmail.com" 
                       className="btn btn-royal-purple me-3 px-4 py-2 rounded-pill hover-lift"
                     >
                       <i className="fas fa-envelope me-2"></i>
