@@ -107,11 +107,25 @@
   z-index: 1 !important;
 }
 
+/* Third row - 7 cards per row on desktop */
+@media (min-width: 992px) {
+  .executive-board-page .third-row-7-cards .col-lg-2 {
+    flex: 0 0 auto !important;
+    width: calc(100% / 7) !important; /* 7 cards per row */
+    max-width: calc(100% / 7) !important;
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .executive-board-page .col-lg-2 {
     flex: 0 0 auto !important;
     width: 33.333333% !important; /* 3 cards per row on tablet */
+  }
+  
+  .executive-board-page .third-row-7-cards .col-lg-2 {
+    width: 33.333333% !important; /* Still 3 cards per row on tablet */
+    max-width: none !important;
   }
 }
 
@@ -119,6 +133,11 @@
   .executive-board-page .col-lg-2 {
     flex: 0 0 auto !important;
     width: 50% !important; /* 2 cards per row on mobile */
+  }
+  
+  .executive-board-page .third-row-7-cards .col-lg-2 {
+    width: 50% !important; /* Still 2 cards per row on mobile */
+    max-width: none !important;
   }
   
   .executive-board-page .card-img-top {
@@ -131,6 +150,11 @@
   .executive-board-page .col-lg-2 {
     flex: 0 0 auto !important;
     width: 100% !important; /* 1 card per row on small mobile */
+  }
+  
+  .executive-board-page .third-row-7-cards .col-lg-2 {
+    width: 100% !important; /* Still 1 card per row on small mobile */
+    max-width: none !important;
   }
   
   .executive-board-page .card-img-top {

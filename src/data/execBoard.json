@@ -1,115 +1,123 @@
 [
   {
-    "name": "Tyler Avescat",
-    "title": "President",
-    "image": "/images/tyler.jpg",
-    "bio": "I oversee all chapter operations and ensure our fraternity maintains its high standards of excellence.",
-    "linkedin": "https://www.linkedin.com/in/tyler-avescat-98a492296/"
-  },
-  {
-    "name": "Dean Rothschild",
-    "title": "Vice President",
-    "image": "/images/Dean.jpeg",
-    "bio": "I support the President and manage internal chapter affairs to ensure smooth operations.",
-    "linkedin": "https://www.linkedin.com/in/dean-rothschild-3448b1296/"
-  },
-  {
-    "name": "Charlie Lakis",
-    "title": "Treasurer",
-    "image": "/images/lakis.jpg",
-    "bio": "I manage the chapter's finances and ensure responsible financial planning.",
-    "linkedin": "https://www.linkedin.com/in/charlielakis/"
-  },
-  {
     "name": "Nicholas Petrocelli",
-    "title": "Philanthropy Chair",
+    "title": "President",
     "image": "/images/petro.jpg",
-    "bio": "I coordinate our charitable initiatives and community service projects.",
-    "linkedin": "https://www.linkedin.com/in/nicholas-petrocelli-98851a297/"
-  },
-  {
-    "name": "Camden Reuthe",
-    "title": "IFC VP of Internal Affairs",
-    "image": "/images/Camden.jpg",
-    "bio": "I oversee the maintenance and operations of the chapter house.",
-    "linkedin": "https://www.linkedin.com/in/charles-mckinney-99345427a/"
+    "bio": "I oversee all chapter operations and ensure our fraternity maintains its high standards of excellence.",
+    "linkedin": "https://www.linkedin.com/in/nicholas-petrocelli/"
   },
   {
     "name": "Matthew Koziol",
-    "title": "Risk Management Chair",
+    "title": "Vice President",
     "image": "/images/Koziol.jpg",
+    "bio": "I support the President and manage internal chapter affairs to ensure smooth operations.",
+    "linkedin": "https://www.linkedin.com/in/matthew-koziol-/"
+  },
+  {
+    "name": "Ben Bullock",
+    "title": "Treasurer",
+    "image": "/images/bullock.jpg",
+    "bio": "I manage the chapter's finances and ensure responsible financial planning.",
+    "linkedin": "https://www.linkedin.com/in/ben-j-bullock/"
+  },
+  {
+    "name": "Camden Reuthe",
+    "title": "IFC President",
+    "image": "/images/Camden.jpg",
+    "bio": "I oversee the maintenance and operations of the chapter house.",
+    "linkedin": "https://www.linkedin.com/in/camdenreuthe/"
+  },
+  {
+    "name": "Nicholas Arce",
+    "title": "Philanthropy Chair",
+    "image": "/images/arce.jpg",
+    "bio": "I coordinate our charitable initiatives and community service projects.",
+    "linkedin": "https://www.linkedin.com/in/nick-arce/"
+  },
+  
+  {
+    "name": "Aidan Yahav",
+    "title": "Risk Management Chair",
+    "image": "/images/yahav.jpg",
     "bio": "I ensure the safety and well-being of all chapter members at events.",
     "linkedin": "https://www.linkedin.com/in/matthew-koziol-/"
   },
   {
-    "name": "Mike Freeman",
+    "name": "Spencer Karlinsky",
     "title": "Recorder",
-    "image": "/images/freeman.jpg",
+    "image": "/images/spencer.jpg",
     "bio": "I maintain chapter records and handle official communications.",
     "linkedin": "https://www.linkedin.com/in/mike-freeman-626138200/"
   },
   {
-    "name": "Sam Goldstein",
+    "name": "Connor Meadows",
     "title": "Warden",
-    "image": "/images/SAMMY.jpg",
+    "image": "/images/meadows.jpg",
     "bio": "I maintain order and security during chapter meetings and events.",
-    "linkedin": "https://www.linkedin.com/in/sam-goldstein95/"
+    "linkedin": "https://www.linkedin.com/in/connor-meadows/"
   },
   {
-    "name": "Michael Rivera",
+    "name": "Tyson Yaxley",
     "title": "Member Educator",
-    "image": "/images/Rivera.jpg",
+    "image": "/images/yax.jpg",
     "bio": "I coordinate educational programs and ensure member development.",
-    "linkedin": "https://www.linkedin.com/in/michael-rivera-843a5a297/"
+    "linkedin": "https://www.linkedin.com/in/tyson-yaxley-b92408328/"
   },
   {
-    "name": "Brooks Utter",
+    "name": "Max McGonnell",
     "title": "Brotherhood/Alumni Chair",
-    "image": "/images/butter.jpg",
+    "image": "/images/mcgonnell.jpg",
     "bio": "I strengthen brotherhood bonds and maintain alumni connections.",
-    "linkedin": "https://www.linkedin.com/in/brooks-utter-7a54b0297/"
-  },
-  {
-    "name": "Garrett Anderson",
-    "title": "Social Chair",
-    "image": "/images/Gandy.jpg",
-    "bio": "I plan and organize social events and activities for the chapter.",
-    "linkedin": "https://www.linkedin.com/in/garrettandersen/"
-  },
-  {
-    "name": "Rafael Angarita",
-    "title": "Social Chair",
-    "image": "/images/Rafa.jpg",
-    "bio": "I assist in planning and organizing social events and activities.",
-    "linkedin": "https://www.linkedin.com/in/rafael-angarita-885a48297/"
-  },
-  {
-    "name": "Max Purper",
-    "title": "Rush Chair",
-    "image": "/images/Purper.jpg",
-    "bio": "I coordinate recruitment efforts and welcome potential new members.",
-    "linkedin": "https://www.linkedin.com/in/max-purper-b6a933297/"
+    "linkedin": "https://www.linkedin.com/in/max-mcgonnell-14a88b306/"
   },
   {
     "name": "Marcelo Morales",
-    "title": "Rush Chair",
+    "title": "Social Chair",
     "image": "/images/Celo.jpg",
-    "bio": "I assist in coordinating recruitment efforts and member engagement.",
+    "bio": "I plan and organize social events and activities for the chapter.",
     "linkedin": "https://www.linkedin.com/in/marcelo-morales-40b4b1297/"
   },
   {
-    "name": "Charlie McKinney",
+    "name": "Harrison Crosby",
+    "title": "Social Chair",
+    "image": "/images/harry.jpg",
+    "bio": "I assist in planning and organizing social events and activities.",
+    "linkedin": "https://www.linkedin.com/"
+  },
+  {
+    "name": "Jack David",
+    "title": "Rush Chair",
+    "image": "/images/jd.jpg",
+    "bio": "I coordinate recruitment efforts and welcome potential new members.",
+    "linkedin": "https://www.linkedin.com/in/jack-david-040248301/"
+  },
+  {
+    "name": "Julius Talas",
+    "title": "Rush Chair",
+    "image": "/images/juliusT.jpg",
+    "bio": "I assist in coordinating recruitment efforts and member engagement.",
+    "linkedin": "https://www.linkedin.com/in/julius-talas/"
+  },
+  {
+    "name": "Collin Young",
     "title": "House Manager",
-    "image": "/images/McKinney.jpg",
-    "bio": "I oversee the maintenance and operations of the chapter house.",
-    "linkedin": "https://www.linkedin.com/in/charles-mckinney-99345427a/"
+    "image": "/images/collin.jpg",
+    "bio": "I assist in managing the chapter house and its facilities.",
+    "linkedin": "https://www.linkedin.com/in/collinyoungfsu/"
   },
   
   {
-    "name": "Nick Oursler",
+    "name": "Nicholas Ciancio",
     "title": "House Manager",
-    "image": "/images/Oursler.jpg",
+    "image": "/images/Ciancio.jpg",
     "bio": "I assist in managing the chapter house and its facilities.",
-    "linkedin": "https://www.linkedin.com/in/nicholasoursler/"
+    "linkedin": "https://www.linkedin.com/in/nicholas-ciancio-/"
+  },
+  {
+    "name": "Joseph Wehbe",
+    "title": "House Manager",
+    "image": "/images/Wehbe.jpg",
+    "bio": "I assist in managing the chapter house and its facilities.",
+    "linkedin": "https://www.linkedin.com/in/joseph-wehbe-b27691347/"
   }
 ]

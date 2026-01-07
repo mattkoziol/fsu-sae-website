@@ -6,7 +6,7 @@ const ExecutiveBoard = () => {
   // Split the data into three rows as requested
   const firstRow = execBoard.slice(0, 5);   // First 5 members
   const secondRow = execBoard.slice(5, 10); // Next 5 members  
-  const thirdRow = execBoard.slice(10, 16); // Last 6 members (15 total, but you have 15 members)
+  const thirdRow = execBoard.slice(10, 17); // Last 7 members (including Joseph Wehbe)
 
   const renderCard = (member, index) => (
     <div key={member.name} className="col-lg-2 col-md-4 col-sm-6 mb-4">
@@ -74,8 +74,8 @@ const ExecutiveBoard = () => {
             {secondRow.map((member, index) => renderCard(member, index))}
           </div>
 
-          {/* Third Row - 5 cards (you have 15 members total) */}
-          <div className="row justify-content-center">
+          {/* Third Row - 7 cards */}
+          <div className="row justify-content-center third-row-7-cards">
             {thirdRow.map((member, index) => renderCard(member, index))}
           </div>
         </div>
