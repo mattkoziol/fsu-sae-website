@@ -277,7 +277,45 @@ function Home() {
         </div>
       )}
 
-  
+      <section className="rush-section py-5 bg-gradient-light animate-fade-in">
+        <div className="container">
+          <div className="row align-items-center g-5">
+            <div className="col-md-6 col-lg-6">
+              <h2 className="section-header mb-4">
+                <i className="fas fa-handshake text-royal-purple me-3"></i>
+                Interested in Joining SAE?
+              </h2>
+              <div className="rush-content">
+                <p className="lead mb-4">
+                  Are you a Potential New Member (PNM) interested in rushing Sigma Alpha Epsilon at Florida State University? 
+                  We're always looking for men who exemplify our values of scholarship, leadership, and service.
+                </p>
+                <p className="mb-4">
+                  Fill out our interest form to learn more about rush events, meet our brothers, and discover what makes SAE at FSU special.
+                </p>
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfIdO3DJXJXWZ6uOZ2V_1paIlAysjkkXu-IJCmqUooavlQb5Q/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-royal-purple btn-lg px-5 py-3 hover-lift"
+                >
+                  <i className="fas fa-clipboard-list me-2"></i>
+                  Fill Out Interest Form
+                </a>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-6">
+              <div className="image-container hover-lift">
+                <img 
+                  src="/images/RushPromo.jpg" 
+                  alt="SAE Rush Promotion" 
+                  className="img-fluid rounded-3 shadow-lg" 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="connect py-5 text-center animate-fade-in">
         <div className="container">
@@ -316,7 +354,7 @@ function Home() {
             <div>
               <a 
                 className="btn btn-outline-royal-purple btn-lg px-5 py-3 hover-lift"
-                href="mailto:flbetasae@gmail.com?subject=SAE%20Alumni%20Contact"
+                href="mailto:Info.fsusae@fsusae.com?subject=SAE%20Alumni%20Contact"
                 target="_blank"
                 rel="noopener noreferrer"
               >

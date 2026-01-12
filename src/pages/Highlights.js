@@ -11,6 +11,37 @@ const Highlights = () => {
   // Sample data - replace with your actual content
   const eventHighlights = [
     {
+      id: 6,
+      title: "Virginia Tech Tailgate",
+      image: "/images/galleries/VirginiaTech-Tailgate/Photo1.jpg",
+      video: null,
+      description: "Brothers came together for an exciting tailgate before the game against Virginia Tech, celebrating our Seminole spirit and brotherhood.",
+      date: "November 2025",
+      gallery: [
+        "/images/galleries/VirginiaTech-Tailgate/Photo1.jpg",
+        "/images/galleries/VirginiaTech-Tailgate/Photo2.jpg",
+        "/images/galleries/VirginiaTech-Tailgate/Photo3.jpg",
+        "/images/galleries/VirginiaTech-Tailgate/Photo4.jpg",
+        "/images/galleries/VirginiaTech-Tailgate/Photo5.jpg"
+      ]
+    },
+    {
+      id: 5,
+      title: "SAEFARI",
+      image: "/images/galleries/SAEFARI/Photo1.jpg",
+      video: null,
+      description: "SAEFARI brought the chapter together for an unforgettable themed event, creating lasting memories and strengthening our brotherhood bonds.",
+      date: "October 2025",
+      gallery: [
+        "/images/galleries/SAEFARI/Photo1.jpg",
+        "/images/galleries/SAEFARI/Photo2.jpg",
+        "/images/galleries/SAEFARI/Photo3.jpg",
+        "/images/galleries/SAEFARI/Photo4.jpg",
+        "/images/galleries/SAEFARI/Photo5.jpg",
+        "/images/galleries/SAEFARI/Photo6.jpg"
+      ]
+    },
+    {
       id: 1,
       title: "Paddy Murphy Week",
       image: "/images/galleries/Paddy-Murphy-Gallery/Photo1.jpg",

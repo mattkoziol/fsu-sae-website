@@ -16,14 +16,26 @@ const Philanthropy = () => {
                 Our Philanthropic Mission
               </h2>
               <div className="mission-content">
-                <p className="lead mb-4">Each spring, the brothers of SAE at Florida State University host <strong className="text-gold">Paddy Murphy Week</strong> in honor of the <strong className="text-gold">Julia C. Black Legacy Scholarship</strong>, created after Julia's passing in 2023.</p>
-                
-                <div className="highlight-box mb-4">
-                  <i className="fas fa-trophy text-gold me-2"></i>
-                  <span>Thanks to the dedication of our brothers and the incredible efforts of our sweetheart candidates, we raised over <strong className="text-gold">$14,000</strong> through a week of events, all dedicated to continuing Julia's legacy.</span>
+                <div className="julia-tribute mb-5">
+                  <h3 className="h4 text-royal-purple mb-3">
+                    <i className="fas fa-heart text-gold me-2"></i>
+                    Remembering Julia C. Black
+                  </h3>
+                  <p className="mb-4">Julia C. Black was the beloved sister of one of our brothers, and her memory continues to inspire our chapter's commitment to service and community. At her high school, Julia embodied excellence in all she pursued, whether leading on the volleyball court, where her passion for the game shone brightly, or in her daily interactions with those around her.</p>
+                  
+                  <p className="mb-4">Those who knew Julia remember her as a remarkably kind-hearted and generous person, someone who brought light and warmth to every room she entered. Her spirit of compassion and her dedication to making a positive impact on others left an indelible mark on our chapter and the broader community.</p>
                 </div>
                 
-                <p className="mb-4">These funds go directly to a graduating high school senior who reflects the strength and spirit Julia embodied.</p>
+                <div className="honoring-julia mb-4">
+                  <p className="lead mb-4">Each spring, the brothers of SAE at Florida State University host <strong className="text-gold">Paddy Murphy Week</strong> in honor of the <strong className="text-gold">Julia C. Black Legacy Scholarship</strong>, created after Julia's passing in 2023. This annual tradition allows us to celebrate her life while supporting future generations of students who share her values of kindness, generosity, and excellence.</p>
+                  
+                  <div className="highlight-box mb-4">
+                    <i className="fas fa-trophy text-gold me-2"></i>
+                    <span>Thanks to the dedication of our brothers and the incredible efforts of our sweetheart candidates, we raised over <strong className="text-gold">$14,000</strong> through a week of events, all dedicated to continuing Julia's legacy.</span>
+                  </div>
+                  
+                  <p className="mb-4">These funds go directly to a graduating high school senior who reflects the strength, spirit, and character that Julia embodied throughout her life.</p>
+                </div>
                 
                 <p className="mb-4">Our commitment to service doesn't end with our own chapter. Each year, we proudly support <strong className="text-royal-purple">Panhellenic philanthropy competitions</strong>, with brothers raising funds for sorority-led causes across campus.</p>
                 
@@ -34,14 +46,13 @@ const Philanthropy = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-6">
+              <h4 className="text-center text-royal-purple mb-3">
+                <i className="fas fa-crown text-gold me-2"></i>
+                Taylor Hicks
+              </h4>
+              <p className="text-center text-muted mb-4">2025 SAE Violet</p>
               <div className="image-container hover-lift">
-                <img src="/images/JCB.jpg" alt="Julia C. Black Memorial" className="img-fluid rounded-3 shadow-lg" />
-                <div className="image-overlay">
-                  <div className="overlay-content">
-                    <h5 className="text-white mb-2">Taylor Hicks</h5>
-                    <p className="text-white mb-0">2025 SAE Violet</p>
-                  </div>
-                </div>
+                <img src="/images/JCB.jpg" alt="Taylor Hicks - 2025 SAE Violet" className="img-fluid rounded-3 shadow-lg" />
               </div>
             </div>
           </div>

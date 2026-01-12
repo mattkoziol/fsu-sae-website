@@ -211,24 +211,6 @@ const Alumni = () => {
 
   const upcomingEvents = [
     {
-      id: 'fsu-wake-2025-11-01',
-      title: 'FSU vs Wake Forest Tailgate',
-      dateDisplay: 'November 1, 2025',
-      sortDate: '2025-11-01',
-      type: 'Tailgate',
-      icon: 'fas fa-football-ball',
-      description: 'Connect with brothers and cheer on the Noles at our Wake Forest tailgate!'
-    },
-    {
-      id: 'saefari-2025-10-24',
-      title: 'SAEFARI',
-      dateDisplay: 'October 24, 2025',
-      sortDate: '2025-10-24',
-      type: 'Fall Party',
-      icon: 'fas fa-glass-cheers',
-      description: "Our signature fall party returns. Don't miss a great night with brothers and friends."
-    },
-    {
       id: 'FoundersDay-2026-03-06',
       title: 'SAE Founders Day Weekend',
       dateDisplay: 'March 6-8, 2026',
@@ -700,7 +682,7 @@ const Alumni = () => {
                 Help us recognize outstanding alumni achievements by nominating brothers who have made significant impacts in their fields or communities.
               </p>
               <a 
-                href="mailto:flbetasae@gmail.com?subject=Notable%20Alumni%20Nomination" 
+                href="mailto:Info.fsusae@fsusae.com?subject=Notable%20Alumni%20Nomination" 
                 className="btn btn-royal-purple hover-lift"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -760,7 +742,7 @@ const Alumni = () => {
                   <h3 className="card-title text-royal-purple mb-3">Mentorship Program</h3>
                   <p className="card-text mb-4 lh-lg">Guide current undergraduates in their personal and professional development journey.</p>
                   <a 
-                    href="mailto:flbetasae@gmail.com?subject=SAE%20Mentorship%20Interest" 
+                    href="mailto:Info.fsusae@fsusae.com?subject=SAE%20Mentorship%20Interest" 
                     className="btn btn-royal-purple hover-lift"
                     target="_blank"
                     rel="noopener noreferrer"
